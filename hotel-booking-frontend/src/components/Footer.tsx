@@ -145,6 +145,14 @@ const Footer = () => {
                   Terms of Service
                 </a>
               </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Its Fei
+                </a>
+              </li>
             </ul>
           </div>
 
