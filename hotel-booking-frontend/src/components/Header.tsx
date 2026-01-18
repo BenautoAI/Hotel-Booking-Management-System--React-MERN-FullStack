@@ -39,7 +39,7 @@ const Header = () => {
               onClick={handleLogoClick}
               className="flex items-center space-x-2 group"
             >
-              <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
+              <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300 ring-2 ring-red-500">
                 <FeiAvatarLogo size={24} className="group-hover:scale-105 transition-transform" />
               </div>
               <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
