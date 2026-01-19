@@ -35,7 +35,7 @@ const ViteFeiLogo = ({ width = 800, height = 800, className = "" }: ViteFeiLogoP
       {/* Fei Avatar - Wizard Character Overlay */}
       <g id="fei-avatar" transform="translate(450, 350)">
         {/* Outer circle background */}
-        <circle cx="0" cy="0" r="200" fill="none" stroke="#5c4033" strokeWidth="4"/>
+        <circle cx="0" cy="0" r="200" fill="none" stroke="#ff0000" strokeWidth="6"/>
         
         {/* Wizard Hat */}
         <g id="wizard-hat">
