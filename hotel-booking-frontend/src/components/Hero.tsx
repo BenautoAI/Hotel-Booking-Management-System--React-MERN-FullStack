@@ -3,7 +3,7 @@ import AdvancedSearch from "./AdvancedSearch";
 
 const Hero = ({ onSearch }: { onSearch: (searchData: any) => void }) => {
   return (
-    <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden border-4 border-red-500">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-transparent" />
