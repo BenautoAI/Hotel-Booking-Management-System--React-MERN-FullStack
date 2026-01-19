@@ -10,7 +10,6 @@ import {
   BookingType,
 } from "../../shared/types";
 import { BookingFormData } from "./forms/BookingForm/BookingForm";
-import { queryClient } from "./main";
 
 export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await axiosInstance.get("/api/users/me");
@@ -38,24 +37,8 @@ export const signIn = async (formData: SignInFormData) => {
     console.log("User ID stored for incognito mode fallback");
   }
 
-  // Force validate token after successful login to update React Query cache
-  try {
-    const validationResult = await validateToken();
-    console.log("Token validation after login:", validationResult);
-
-    // Invalidate and refetch the validateToken query to update the UI
-    queryClient.invalidateQueries("validateToken");
-
-    // Force a refetch to ensure the UI updates
-    await queryClient.refetchQueries("validateToken");
-  } catch (error) {
-    console.log("Token validation failed after login, but continuing...");
-
-    // Even if validation fails, if we have a token stored, consider it a success for incognito mode
-    if (localStorage.getItem("session_id")) {
-      console.log("Incognito mode detected - using stored token as fallback");
-    }
-  }
+  // Token validation and query invalidation is handled by the calling component
+  // Components use queryClient.invalidateQueries("validateToken") in their onSuccess handlers
 
   return response.data;
 };
