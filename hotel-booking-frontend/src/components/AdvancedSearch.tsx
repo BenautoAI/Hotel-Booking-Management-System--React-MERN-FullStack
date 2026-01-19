@@ -52,67 +52,35 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
   const [isLoadingPlaces, setIsLoadingPlaces] = useState(false);
   const hasFetchedRef = useRef(false);
 
-  // Fetch hotel places on mount
+  // Fetch hotel places on mount - disabled when API is not available
   useEffect(() => {
-    // Prevent multiple API calls - use a ref to track if we've already fetched
-    if (isLoadingPlaces || hasFetchedRef.current) return;
-
-    const fetchPlaces = async () => {
+    // Check if we have cached places data from localStorage
+    const cachedPlaces = localStorage.getItem("hotelPlaces");
+    if (cachedPlaces) {
       try {
-        setIsLoadingPlaces(true);
-        hasFetchedRef.current = true;
-
-        // Check if we have cached places data
-        const cachedPlaces = localStorage.getItem("hotelPlaces");
-        if (cachedPlaces) {
-          const parsedPlaces = JSON.parse(cachedPlaces);
-          const cacheTime = localStorage.getItem("hotelPlacesTime");
-          const now = Date.now();
-
-          // Cache is valid for 5 minutes
-          if (cacheTime && now - parseInt(cacheTime) < 5 * 60 * 1000) {
-            setPlaces(parsedPlaces);
-            setIsLoadingPlaces(false);
-            return;
-          }
-        }
-
-        const apiBaseUrl =
-          import.meta.env.VITE_API_BASE_URL || "http://localhost:7002";
-        const response = await fetch(`${apiBaseUrl}/api/hotels`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data: { city?: string; place?: string; name?: string }[] =
-          await response.json();
-        const uniquePlaces: string[] = Array.from(
-          new Set(
-            data
-              .map((hotel) => hotel.city || hotel.place || hotel.name)
-              .filter(
-                (place): place is string =>
-                  typeof place === "string" && place.length > 0
-              )
-          )
-        );
-
-        // Cache the places data
-        localStorage.setItem("hotelPlaces", JSON.stringify(uniquePlaces));
-        localStorage.setItem("hotelPlacesTime", Date.now().toString());
-
-        setPlaces(uniquePlaces);
+        const parsedPlaces = JSON.parse(cachedPlaces);
+        setPlaces(parsedPlaces);
       } catch (error) {
-        console.error("Error fetching hotels:", error);
+        // Invalid cache, use empty array
         setPlaces([]);
-      } finally {
-        setIsLoadingPlaces(false);
       }
-    };
-
-    fetchPlaces();
-  }, []); // Remove all dependencies to run only once on mount
+    } else {
+      // No cached data and API not available - use default popular destinations
+      const defaultPlaces = [
+        "New York",
+        "London",
+        "Paris",
+        "Tokyo",
+        "Dubai",
+        "Singapore",
+        "Barcelona",
+        "Rome",
+        "Bangkok",
+        "Istanbul",
+      ];
+      setPlaces(defaultPlaces);
+    }
+  }, []);
 
   // Clear dropdown state when component mounts
   useEffect(() => {
