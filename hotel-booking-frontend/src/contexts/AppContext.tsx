@@ -5,7 +5,7 @@ import * as apiClient from "../api-client";
 import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { useToast } from "../hooks/use-toast";
 
-const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || "";
+const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "";
 
 type ToastMessage = {
   title: string;
@@ -27,7 +27,10 @@ export const AppContext = React.createContext<AppContext | undefined>(
   undefined
 );
 
-const stripePromise = loadStripe(STRIPE_PUB_KEY);
+// Only load Stripe if we have a valid key
+const stripePromise = STRIPE_PUB_KEY && STRIPE_PUB_KEY.startsWith("pk_") 
+  ? loadStripe(STRIPE_PUB_KEY) 
+  : Promise.resolve(null);
 
 export const AppContextProvider = ({
   children,
@@ -64,8 +67,8 @@ export const AppContextProvider = ({
       retry: false,
       refetchOnWindowFocus: false, // Don't refetch on focus
       staleTime: 5 * 60 * 1000, // 5 minutes
-      // Always enabled - let validateToken handle missing tokens
-      enabled: true,
+      // Disabled for demo/preview mode to avoid API calls
+      enabled: false,
       // Add fallback for JWT authentication
       onError: (error: any) => {
         // If validateToken fails, check if we have a token in localStorage
