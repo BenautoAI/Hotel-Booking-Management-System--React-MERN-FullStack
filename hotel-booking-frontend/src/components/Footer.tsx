@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import feiAvatarDataUrl from "../assets/fei-avatar";
 
 const Footer = () => {
   return (
@@ -20,7 +21,7 @@ const Footer = () => {
               <div className="bg-white p-2 rounded-lg">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold">MernHolidays</span>
+              <span className="text-2xl font-bold text-red-500">MernHolidays</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
@@ -172,9 +173,16 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-300 text-sm">
-            © 2025 MernHolidays. All rights reserved.
-          </p>
+          <div className="flex items-center space-x-3">
+            <img
+              src={feiAvatarDataUrl}
+              alt="Fei Avatar"
+              className="w-10 h-10 rounded-full bg-white p-1"
+            />
+            <p className="text-gray-300 text-sm">
+              © 2025 <span className="text-red-500">MernHolidays</span>. All rights reserved.
+            </p>
+          </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
