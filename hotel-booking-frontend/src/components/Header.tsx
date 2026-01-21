@@ -38,7 +38,12 @@ const Header = () => {
               onClick={handleLogoClick}
               className="flex items-center space-x-2 group"
             >
-              <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center space-x-1.5 bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
+                <img 
+                  src="/fei-avatar.png" 
+                  alt="Fei Avatar" 
+                  className="w-6 h-6 object-contain"
+                />
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
               <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
