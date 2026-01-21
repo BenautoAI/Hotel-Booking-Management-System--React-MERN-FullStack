@@ -5,7 +5,7 @@ import * as apiClient from "../api-client";
 import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { useToast } from "../hooks/use-toast";
 
-const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "pk_test_51Dummy1234567890abcdefghijklmnopqrstuvwxyz";
+const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "";
 
 type ToastMessage = {
   title: string;
@@ -27,7 +27,10 @@ export const AppContext = React.createContext<AppContext | undefined>(
   undefined
 );
 
-const stripePromise = loadStripe(STRIPE_PUB_KEY);
+// Only load Stripe if we have a valid key
+const stripePromise = STRIPE_PUB_KEY && STRIPE_PUB_KEY.startsWith("pk_") 
+  ? loadStripe(STRIPE_PUB_KEY) 
+  : Promise.resolve(null);
 
 export const AppContextProvider = ({
   children,
