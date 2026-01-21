@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
 import SignOutButton from "./SignOutButton";
+import FeiAvatar from "./FeiAvatar";
 import {
   FileText,
   Activity,
@@ -38,6 +39,7 @@ const Header = () => {
               onClick={handleLogoClick}
               className="flex items-center space-x-2 group"
             >
+              <FeiAvatar size={40} className="transition-transform group-hover:scale-110 duration-300" />
               <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
