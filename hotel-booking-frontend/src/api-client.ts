@@ -10,7 +10,7 @@ import {
   BookingType,
 } from "../../shared/types";
 import { BookingFormData } from "./forms/BookingForm/BookingForm";
-import { queryClient } from "./main";
+// import { queryClient } from "./main";
 
 export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await axiosInstance.get("/api/users/me");
@@ -44,10 +44,10 @@ export const signIn = async (formData: SignInFormData) => {
     console.log("Token validation after login:", validationResult);
 
     // Invalidate and refetch the validateToken query to update the UI
-    queryClient.invalidateQueries("validateToken");
+    // queryClient.invalidateQueries("validateToken");
 
     // Force a refetch to ensure the UI updates
-    await queryClient.refetchQueries("validateToken");
+    // await queryClient.refetchQueries("validateToken");
   } catch (error) {
     console.log("Token validation failed after login, but continuing...");
 
