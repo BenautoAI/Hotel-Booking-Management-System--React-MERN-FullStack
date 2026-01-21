@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="bg-white p-2 rounded-lg">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold">MernHolidays</span>
+              <span className="text-2xl font-bold text-red-500">MernHolidays</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
@@ -180,7 +180,7 @@ const Footer = () => {
               className="w-10 h-10 rounded-full bg-white p-1"
             />
             <p className="text-gray-300 text-sm">
-              © 2025 MernHolidays. All rights reserved.
+              © 2025 <span className="text-red-500">MernHolidays</span>. All rights reserved.
             </p>
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
