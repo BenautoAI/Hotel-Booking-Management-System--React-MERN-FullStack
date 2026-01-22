@@ -1,0 +1,2 @@
+Avatar image placeholder for hotel logo.
+Replace this file with the actual avatar image (avatar.png or avatar.jpg) provided by the user.

@@ -38,8 +38,20 @@ const Header = () => {
               onClick={handleLogoClick}
               className="flex items-center space-x-2 group"
             >
-              <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
+              <div className="relative bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
                 <Building2 className="w-6 h-6 text-primary-600" />
+                {/* Avatar overlay */}
+                <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full border-2 border-white shadow-md overflow-hidden bg-white">
+                  <img
+                    src="/avatar.png"
+                    alt="Hotel Avatar"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to a default avatar if image fails to load
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
               </div>
               <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
                 MernHolidays
