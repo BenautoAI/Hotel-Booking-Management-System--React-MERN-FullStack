@@ -20,7 +20,7 @@ const Footer = () => {
               <div className="bg-white p-2 rounded-lg">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold">MernHolidays</span>
+              <span className="text-2xl font-bold text-red-600">MernHolidays</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
