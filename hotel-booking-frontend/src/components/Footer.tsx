@@ -15,7 +15,7 @@ const Footer = () => {
   const { isLoggedIn } = useAppContext();
 
   return (
-    <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
+    <footer className="bg-red-600 text-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
