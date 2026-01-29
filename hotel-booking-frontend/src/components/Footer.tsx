@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import useAppContext from "../hooks/useAppContext";
 import {
   Building2,
   Mail,
@@ -10,6 +12,8 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const { isLoggedIn } = useAppContext();
+
   return (
     <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -29,25 +33,33 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
+                onClick={(e) => e.preventDefault()}
                 className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
+                onClick={(e) => e.preventDefault()}
                 className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
+                onClick={(e) => e.preventDefault()}
                 className="text-gray-300 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
+                onClick={(e) => e.preventDefault()}
                 className="text-gray-300 hover:text-white transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -59,45 +71,41 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/search"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Hotels
-                </a>
+                </Link>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Destinations
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
+              {isLoggedIn && (
+                <>
+                  <li>
+                    <Link
+                      to="/my-hotels"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      My Hotels
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/my-bookings"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      My Bookings
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
