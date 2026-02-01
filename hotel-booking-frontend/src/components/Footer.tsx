@@ -8,8 +8,25 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { useQuery } from "react-query";
+import * as apiClient from "../api-client";
+import useAppContext from "../hooks/useAppContext";
 
 const Footer = () => {
+  const { isLoggedIn } = useAppContext();
+
+  // Fetch current user data when logged in
+  const { data: user } = useQuery(
+    "currentUser",
+    apiClient.fetchCurrentUser,
+    {
+      enabled: isLoggedIn,
+      retry: false,
+      refetchOnWindowFocus: false,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    }
+  );
+
   return (
     <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -22,6 +39,46 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold">MernHolidays</span>
             </div>
+            
+            {/* Avatar Section */}
+            <div className="flex items-center space-x-3">
+              <div className="relative w-12 h-12 rounded-full p-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 hover:scale-110 transition-transform duration-300">
+                <img
+                  src="/avatar.jpg"
+                  alt={user ? `${user.firstName} ${user.lastName}'s avatar` : "User Avatar"}
+                  className="w-full h-full rounded-full object-cover border-2 border-white"
+                  onError={(e) => {
+                    // Fallback to a simple SVG avatar if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent && !parent.querySelector('svg')) {
+                      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                      svg.setAttribute('class', 'w-full h-full rounded-full bg-gray-200');
+                      svg.setAttribute('viewBox', '0 0 100 100');
+                      svg.innerHTML = '<circle cx="50" cy="50" r="45" fill="#E5E7EB"/><circle cx="50" cy="40" r="15" fill="#9CA3AF"/><ellipse cx="50" cy="75" rx="25" ry="20" fill="#9CA3AF"/>';
+                      parent.appendChild(svg);
+                    }
+                  }}
+                />
+              </div>
+              {isLoggedIn && user && (
+                <div className="flex flex-col">
+                  <span className="text-gray-300 font-medium text-sm hover:text-gray-100 transition-colors">
+                    {user.firstName} {user.lastName}
+                  </span>
+                  {user.role && (
+                    <span className="text-gray-400 text-xs capitalize">
+                      {user.role.replace('_', ' ')}
+                    </span>
+                  )}
+                </div>
+              )}
+              {!isLoggedIn && (
+                <span className="text-gray-300 font-medium text-sm">Guest</span>
+              )}
+            </div>
+
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
