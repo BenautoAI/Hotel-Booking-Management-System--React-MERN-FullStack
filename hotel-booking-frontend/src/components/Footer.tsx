@@ -33,7 +33,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-red-500 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
             </p>
