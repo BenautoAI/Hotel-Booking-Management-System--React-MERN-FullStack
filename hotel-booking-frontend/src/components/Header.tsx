@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
-import SignOutButton from "./SignOutButton";
+import UserAvatar from "./UserAvatar";
 import {
   FileText,
   Activity,
@@ -93,7 +93,9 @@ const Header = () => {
                     API Status
                   </Link>
 
-                  <SignOutButton />
+                  <div className="ml-2">
+                    <UserAvatar />
+                  </div>
                 </>
               ) : (
                 <Link
