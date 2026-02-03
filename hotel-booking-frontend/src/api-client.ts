@@ -17,6 +17,13 @@ export const fetchCurrentUser = async (): Promise<UserType> => {
   return response.data;
 };
 
+export const updateUserAvatar = async (avatarUrl: string): Promise<UserType> => {
+  const response = await axiosInstance.patch("/api/users/me/avatar", {
+    avatarUrl,
+  });
+  return response.data;
+};
+
 export const register = async (formData: RegisterFormData) => {
   const response = await axiosInstance.post("/api/users/register", formData);
   return response.data;
