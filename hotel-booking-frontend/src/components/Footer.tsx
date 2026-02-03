@@ -22,7 +22,18 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold">MernHolidays</span>
             </div>
-            <p className="text-gray-300 leading-relaxed">
+            {/* Avatar */}
+            <div className="flex justify-center my-6">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-yellow-400 to-cyan-400 rounded-full blur-sm"></div>
+                <img
+                  src="/avatar.jpg"
+                  alt="MernHolidays Avatar"
+                  className="relative w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg ring-4 ring-white/20 object-cover"
+                />
+              </div>
+            </div>
+            <p className="text-red-500 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
             </p>
