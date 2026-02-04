@@ -22,6 +22,25 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold">MernHolidays</span>
             </div>
+
+            {/* Avatar with Gradient Border */}
+            <div className="flex justify-center md:justify-start">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+                {/* Gradient border container */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-cyan-400 p-1">
+                  {/* Inner white ring */}
+                  <div className="w-full h-full rounded-full bg-white p-1">
+                    {/* Actual image */}
+                    <img
+                      src="/avatar.jpg"
+                      alt="MernHolidays brand avatar"
+                      className="w-full h-full rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
