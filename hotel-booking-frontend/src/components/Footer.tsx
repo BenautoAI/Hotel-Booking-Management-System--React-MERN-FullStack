@@ -20,7 +20,7 @@ const Footer = () => {
               <div className="bg-white p-2 rounded-lg">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold">MernHolidays</span>
+              <span className="text-2xl font-bold text-red-500">MernHolidays</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
@@ -51,6 +51,19 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
+            </div>
+            {/* Avatar */}
+            <div className="flex justify-center mt-6">
+              <div className="relative">
+                {/* Gradient glow background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-400 to-teal-300 rounded-full blur-sm opacity-75"></div>
+                {/* Avatar image */}
+                <img
+                  src="/assets/avatar.png"
+                  alt="MernHolidays Brand Avatar"
+                  className="relative w-18 h-18 md:w-24 md:h-24 rounded-full border-2 border-white/20 shadow-lg object-cover"
+                />
+              </div>
             </div>
           </div>
 
