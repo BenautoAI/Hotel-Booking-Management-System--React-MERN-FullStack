@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import useAppContext from "../hooks/useAppContext";
 import {
   Building2,
   Mail,
@@ -10,6 +12,8 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const { isLoggedIn } = useAppContext();
+
   return (
     <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -28,25 +32,37 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://facebook.com/mernholidays"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/mernholidays"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Twitter"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/mernholidays"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com/company/mernholidays"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on LinkedIn"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
@@ -59,43 +75,56 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/search"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Hotels
-                </a>
+                </Link>
               </li>
+              {isLoggedIn ? (
+                <>
+                  <li>
+                    <Link
+                      to="/my-bookings"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      My Bookings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/my-hotels"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      My Hotels
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <Link
+                    to="/sign-in"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                </li>
+              )}
               <li>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Destinations
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
+                  href="#about"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Contact
                 </a>
               </li>
             </ul>
@@ -105,9 +134,29 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Support</h3>
             <ul className="space-y-2">
+              {isLoggedIn && (
+                <>
+                  <li>
+                    <Link
+                      to="/api-docs"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      API Docs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/api-status"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      API Status
+                    </Link>
+                  </li>
+                </>
+              )}
               <li>
                 <a
-                  href="#"
+                  href="#help"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Help Center
@@ -115,7 +164,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#booking-guide"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Booking Guide
@@ -123,7 +172,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#cancellation"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Cancellation Policy
@@ -131,7 +180,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#privacy"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Privacy Policy
@@ -139,7 +188,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#terms"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Terms of Service
@@ -177,19 +226,19 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
-              href="#"
+              href="#privacy"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="#terms"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Terms of Service
             </a>
             <a
-              href="#"
+              href="#cookies"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Cookie Policy
