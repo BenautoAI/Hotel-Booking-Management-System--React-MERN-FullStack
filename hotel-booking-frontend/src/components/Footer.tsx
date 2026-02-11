@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import Avatar from "./ui/avatar";
 
 const Footer = () => {
   return (
@@ -21,6 +22,18 @@ const Footer = () => {
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
               <span className="text-2xl font-bold">MernHolidays</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Avatar
+                src="https://i.pravatar.cc/150?img=68"
+                alt="Company Representative"
+                size="lg"
+                withGradientBorder={true}
+              />
+              <div>
+                <p className="text-sm font-semibold text-white">Your Travel Expert</p>
+                <p className="text-xs text-gray-300">Here to help 24/7</p>
+              </div>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
