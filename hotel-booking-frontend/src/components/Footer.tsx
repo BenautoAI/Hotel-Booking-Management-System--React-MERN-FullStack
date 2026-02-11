@@ -52,6 +52,17 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
+            
+            {/* Avatar */}
+            <div className="mt-6">
+              <div className="p-1 bg-gradient-to-br from-teal-400 via-cyan-400 to-purple-300 rounded-full inline-block">
+                <img 
+                  src="/images/avatar.jpg" 
+                  alt="Profile avatar" 
+                  className="w-20 h-20 rounded-full object-cover"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
