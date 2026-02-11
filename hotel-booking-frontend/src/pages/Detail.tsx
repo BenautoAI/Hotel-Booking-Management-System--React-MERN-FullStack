@@ -4,6 +4,8 @@ import * as apiClient from "./../api-client";
 import { AiFillStar } from "react-icons/ai";
 import GuestInfoForm from "../forms/GuestInfoForm/GuestInfoForm";
 import { Badge } from "../components/ui/badge";
+import ReviewStats from "../components/reviews/ReviewStats";
+import ReviewList from "../components/reviews/ReviewList";
 import {
   MapPin,
   Phone,
@@ -302,6 +304,15 @@ const Detail = () => {
             hotelId={hotel._id}
           />
         </div>
+      </div>
+
+      {/* Reviews Section */}
+      <div className="mt-8">
+        <ReviewStats
+          averageRating={hotel.averageRating || 0}
+          reviewCount={hotel.reviewCount || 0}
+        />
+        <ReviewList hotelId={hotel._id} />
       </div>
     </div>
   );

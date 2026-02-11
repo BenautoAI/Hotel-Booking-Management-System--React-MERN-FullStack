@@ -8,6 +8,10 @@ import {
   UserType,
   HotelWithBookingsType,
   BookingType,
+  CreateReviewData,
+  UpdateReviewData,
+  ReviewsResponse,
+  ReviewType,
 } from "../../shared/types";
 import { BookingFormData } from "./forms/BookingForm/BookingForm";
 import { queryClient } from "./main";
@@ -230,5 +234,63 @@ export const fetchBusinessInsightsPerformance = async () => {
   const response = await axiosInstance.get(
     "/api/business-insights/performance"
   );
+  return response.data;
+};
+
+// Review API functions
+export const createReview = async (reviewData: CreateReviewData) => {
+  const response = await axiosInstance.post("/api/reviews", reviewData);
+  return response.data;
+};
+
+export const fetchHotelReviews = async (
+  hotelId: string,
+  params?: {
+    sort?: "helpful" | "recent";
+    page?: number;
+    limit?: number;
+  }
+): Promise<ReviewsResponse> => {
+  const queryParams = new URLSearchParams();
+  if (params?.sort) queryParams.append("sort", params.sort);
+  if (params?.page) queryParams.append("page", params.page.toString());
+  if (params?.limit) queryParams.append("limit", params.limit.toString());
+
+  const response = await axiosInstance.get(
+    `/api/reviews/hotel/${hotelId}?${queryParams}`
+  );
+  return response.data;
+};
+
+export const fetchMyReviews = async (): Promise<ReviewType[]> => {
+  const response = await axiosInstance.get("/api/reviews/my-reviews");
+  return response.data;
+};
+
+export const updateReview = async (
+  reviewId: string,
+  reviewData: UpdateReviewData
+) => {
+  const response = await axiosInstance.put(
+    `/api/reviews/${reviewId}`,
+    reviewData
+  );
+  return response.data;
+};
+
+export const deleteReview = async (reviewId: string) => {
+  const response = await axiosInstance.delete(`/api/reviews/${reviewId}`);
+  return response.data;
+};
+
+export const markReviewHelpful = async (reviewId: string) => {
+  const response = await axiosInstance.post(
+    `/api/reviews/${reviewId}/helpful`
+  );
+  return response.data;
+};
+
+export const fetchEligibleBookings = async () => {
+  const response = await axiosInstance.get("/api/reviews/eligible-bookings");
   return response.data;
 };

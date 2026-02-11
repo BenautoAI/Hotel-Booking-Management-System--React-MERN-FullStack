@@ -16,6 +16,7 @@ import {
   Building,
 } from "lucide-react";
 import { Badge } from "./ui/badge";
+import RatingStars from "./reviews/RatingStars";
 
 type Props = {
   hotel: HotelType;
@@ -130,12 +131,14 @@ const SearchResultsCard = ({ hotel }: Props) => {
                   <span>{hotel.totalBookings} bookings</span>
                 </div>
               )}
-              <div className="flex items-center space-x-1">
-                <AiFillStar className="w-4 h-4 text-yellow-400" />
-                <span>
-                  {hotel.averageRating && hotel.averageRating > 0
-                    ? `${hotel.averageRating.toFixed(1)} avg rating`
-                    : "No ratings yet"}
+              <div className="flex items-center space-x-2">
+                <RatingStars 
+                  rating={hotel.averageRating || 0} 
+                  size="sm" 
+                  showValue={hotel.averageRating ? true : false}
+                />
+                <span className="text-gray-500">
+                  {hotel.reviewCount ? `(${hotel.reviewCount} ${hotel.reviewCount === 1 ? 'review' : 'reviews'})` : '(No reviews yet)'}
                 </span>
               </div>
             </div>

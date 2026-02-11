@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { useQueryWithLoading } from "../hooks/useLoadingHooks";
 import * as apiClient from "../api-client";
 import type { BookingType, HotelWithBookingsType } from "../../../shared/types";
 import { Badge } from "../components/ui/badge";
+import { Button } from "../components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../components/ui/dialog";
+import ReviewForm from "../components/reviews/ReviewForm";
 import {
   Calendar,
   Users,
@@ -17,6 +27,13 @@ import {
 } from "lucide-react";
 
 const MyBookings = () => {
+  const [reviewDialogOpen, setReviewDialogOpen] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState<{
+    bookingId: string;
+    hotelId: string;
+    hotelName: string;
+  } | null>(null);
+
   const { data: hotels } = useQueryWithLoading<HotelWithBookingsType[]>(
     "fetchMyBookings",
     apiClient.fetchMyBookings,
@@ -115,6 +132,25 @@ const MyBookings = () => {
       default:
         return <Clock className="w-4 h-4" />;
     }
+  };
+
+  const isEligibleForReview = (booking: BookingType) => {
+    const checkoutDate = new Date(booking.checkOut);
+    const currentDate = new Date();
+    const validStatus = ["confirmed", "completed"].includes(
+      booking.status || "pending"
+    );
+    return checkoutDate < currentDate && validStatus;
+  };
+
+  const handleWriteReview = (bookingId: string, hotelId: string, hotelName: string) => {
+    setSelectedBooking({ bookingId, hotelId, hotelName });
+    setReviewDialogOpen(true);
+  };
+
+  const handleReviewSuccess = () => {
+    setReviewDialogOpen(false);
+    setSelectedBooking(null);
   };
 
   return (
@@ -377,6 +413,25 @@ const MyBookings = () => {
                             )}
                           </div>
                         )}
+
+                        {/* Write Review Button */}
+                        {isEligibleForReview(booking) && (
+                          <div className="mt-6 pt-4 border-t border-gray-200">
+                            <Button
+                              onClick={() =>
+                                handleWriteReview(
+                                  booking._id,
+                                  hotel._id,
+                                  hotel.name
+                                )
+                              }
+                              className="w-full sm:w-auto"
+                            >
+                              <Star className="w-4 h-4 mr-2" />
+                              Write a Review
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -386,6 +441,26 @@ const MyBookings = () => {
           ))}
         </div>
       </div>
+
+      {/* Review Dialog */}
+      <Dialog open={reviewDialogOpen} onOpenChange={setReviewDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Write a Review</DialogTitle>
+            <DialogDescription>
+              Share your experience at {selectedBooking?.hotelName}
+            </DialogDescription>
+          </DialogHeader>
+          {selectedBooking && (
+            <ReviewForm
+              bookingId={selectedBooking.bookingId}
+              hotelId={selectedBooking.hotelId}
+              onSuccess={handleReviewSuccess}
+              onCancel={() => setReviewDialogOpen(false)}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -135,3 +135,58 @@ export type PaymentIntentResponse = {
   clientSecret: string;
   totalCost: number;
 };
+
+export type ReviewType = {
+  _id: string;
+  userId: string | UserType;
+  hotelId: string | HotelType;
+  bookingId: string;
+  rating: number;
+  comment: string;
+  categories: {
+    cleanliness: number;
+    service: number;
+    location: number;
+    value: number;
+    amenities: number;
+  };
+  isVerified: boolean;
+  helpfulCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type CreateReviewData = {
+  hotelId: string;
+  bookingId: string;
+  rating: number;
+  comment: string;
+  categories: {
+    cleanliness: number;
+    service: number;
+    location: number;
+    value: number;
+    amenities: number;
+  };
+};
+
+export type UpdateReviewData = Partial<{
+  rating: number;
+  comment: string;
+  categories: {
+    cleanliness: number;
+    service: number;
+    location: number;
+    value: number;
+    amenities: number;
+  };
+}>;
+
+export type ReviewsResponse = {
+  reviews: ReviewType[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
+};
