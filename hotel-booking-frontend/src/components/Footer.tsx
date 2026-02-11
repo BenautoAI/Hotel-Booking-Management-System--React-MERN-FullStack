@@ -16,11 +16,20 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="bg-white p-2 rounded-lg">
-                <Building2 className="w-6 h-6 text-primary-600" />
+            <div className="flex items-center space-x-3">
+              {/* Avatar */}
+              <img
+                src="/avatar.png"
+                alt="MernHolidays Avatar"
+                className="w-12 h-12 rounded-full object-cover border-2 border-white/20"
+              />
+              {/* Logo and Brand */}
+              <div className="flex items-center space-x-2">
+                <div className="bg-white p-2 rounded-lg">
+                  <Building2 className="w-6 h-6 text-primary-600" />
+                </div>
+                <span className="text-2xl font-bold">MernHolidays</span>
               </div>
-              <span className="text-2xl font-bold">MernHolidays</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
