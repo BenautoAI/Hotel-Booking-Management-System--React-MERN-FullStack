@@ -26,6 +26,20 @@ const Footer = () => {
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
             </p>
+            {/* Avatar */}
+            <div className="flex justify-start">
+              <div className="relative w-24 h-24">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 p-1">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop"
+                      alt="Profile Avatar"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="flex space-x-4">
               <a
                 href="#"
