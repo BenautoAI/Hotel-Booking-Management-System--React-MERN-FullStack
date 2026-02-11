@@ -29,6 +29,7 @@ const Footer = () => {
                 alt="Company Representative"
                 size="lg"
                 withGradientBorder={true}
+                className="ring-4 ring-red-500"
               />
               <div>
                 <p className="text-sm font-semibold text-white">Your Travel Expert</p>
