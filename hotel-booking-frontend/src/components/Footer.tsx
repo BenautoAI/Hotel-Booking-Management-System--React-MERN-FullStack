@@ -7,9 +7,14 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  User,
 } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import useAppContext from "../hooks/useAppContext";
 
 const Footer = () => {
+  const { isLoggedIn } = useAppContext();
+
   return (
     <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -172,9 +177,22 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-300 text-sm">
-            © 2025 MernHolidays. All rights reserved.
-          </p>
+          <div className="flex items-center space-x-4">
+            {isLoggedIn && (
+              <Avatar className="w-10 h-10 ring-2 ring-white/30 hover:ring-white/50 transition-all shadow-lg">
+                <AvatarImage
+                  src="https://api.dicebear.com/7.x/adventurer/svg?seed=user"
+                  alt="User Avatar"
+                />
+                <AvatarFallback className="bg-primary-600">
+                  <User className="w-5 h-5 text-white" />
+                </AvatarFallback>
+              </Avatar>
+            )}
+            <p className="text-gray-300 text-sm">
+              © 2025 MernHolidays. All rights reserved.
+            </p>
+          </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
