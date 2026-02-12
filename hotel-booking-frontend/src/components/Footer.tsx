@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import UserAvatar from "./UserAvatar";
 
 const Footer = () => {
   return (
@@ -51,6 +52,11 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
+            </div>
+            
+            {/* User Avatar Section */}
+            <div className="mt-6 pt-6 border-t border-primary-700">
+              <UserAvatar />
             </div>
           </div>
 
