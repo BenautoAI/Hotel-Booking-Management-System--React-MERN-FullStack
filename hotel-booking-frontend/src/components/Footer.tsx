@@ -26,6 +26,18 @@ const Footer = () => {
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
             </p>
+            {/* Avatar Section */}
+            <div className="flex items-center space-x-3">
+              <div className="relative inline-flex w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-primary-400 to-primary-600 ring-2 ring-white/20">
+                <div className="flex w-full h-full items-center justify-center text-sm font-semibold text-white">
+                  MH
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white font-medium text-sm">MernHolidays Team</span>
+                <span className="text-gray-400 text-xs">Available 24/7</span>
+              </div>
+            </div>
             <div className="flex space-x-4">
               <a
                 href="#"
