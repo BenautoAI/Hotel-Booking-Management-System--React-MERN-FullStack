@@ -5,7 +5,7 @@ import * as apiClient from "../api-client";
 import useAppContext from "../hooks/useAppContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, LogIn, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import {
@@ -30,6 +30,7 @@ const SignIn = () => {
   const queryClient = useQueryClient();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const location = useLocation();
 
@@ -60,8 +61,24 @@ const SignIn = () => {
     loadingMessage: "Signing you in...",
   });
 
+  // Load rememberMe preference from localStorage on component mount
+  useEffect(() => {
+    const remembered = localStorage.getItem("rememberMe");
+    if (remembered === "true") {
+      setRememberMe(true);
+    }
+  }, []);
+
   const onSubmit = handleSubmit((data) => {
     setIsLoading(true);
+
+    // Store remember me preference
+    if (rememberMe) {
+      localStorage.setItem("rememberMe", "true");
+    } else {
+      localStorage.removeItem("rememberMe");
+    }
+
     mutation.mutate(data, {
       onSettled: () => setIsLoading(false),
     });
@@ -187,6 +204,26 @@ const SignIn = () => {
                     </Badge>
                   </div>
                 )}
+              </div>
+
+              {/* Remember Me & Forgot Password */}
+              <div className="flex items-center justify-between">
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                  />
+                  <span className="text-sm text-gray-600">Remember me</span>
+                </label>
+
+                <Link
+                  to="/forgot-password"
+                  className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                >
+                  Forgot password?
+                </Link>
               </div>
 
               {/* Submit Button */}
