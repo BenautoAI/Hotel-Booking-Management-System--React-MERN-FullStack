@@ -8,7 +8,16 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
+/**
+ * Footer component for the application.
+ * Displays company information, quick navigation links, support resources,
+ * contact information, and legal links. Responsive design that adapts from
+ * 1 column on mobile to 4 columns on desktop.
+ *
+ * @returns React footer element with navigation and contact information
+ */
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white">
@@ -59,40 +68,40 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/search"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Hotels
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/search"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Destinations
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/api-docs"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="mailto:support@mernholidays.com"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Contact
@@ -106,24 +115,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Support</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/api-status"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/my-bookings"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Booking Guide
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#cancellation-policy"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Cancellation Policy
@@ -131,7 +140,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#privacy-policy"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Privacy Policy
@@ -139,7 +148,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#terms-of-service"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Terms of Service
@@ -177,19 +186,19 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
-              href="#"
+              href="#privacy-policy"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="#terms-of-service"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Terms of Service
             </a>
             <a
-              href="#"
+              href="#cookie-policy"
               className="text-gray-300 hover:text-white text-sm transition-colors"
             >
               Cookie Policy
