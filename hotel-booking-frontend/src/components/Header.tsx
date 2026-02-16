@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
 import SignOutButton from "./SignOutButton";
+import Avatar from "./ui/avatar";
 import {
   FileText,
   Activity,
@@ -36,10 +37,15 @@ const Header = () => {
             {/* Logo */}
             <button
               onClick={handleLogoClick}
-              className="flex items-center space-x-2 group"
+              className="flex items-center space-x-3 group"
             >
-              <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
-                <Building2 className="w-6 h-6 text-primary-600" />
+              <div className="transition-transform duration-300 group-hover:scale-105">
+                <Avatar
+                  src="/vite.svg"
+                  alt="MernHolidays Logo"
+                  size="lg"
+                  fallback={<Building2 className="w-6 h-6 text-primary-600" />}
+                />
               </div>
               <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
                 MernHolidays
