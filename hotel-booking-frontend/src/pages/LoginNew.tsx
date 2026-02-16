@@ -73,7 +73,7 @@ const LoginNew = () => {
           <div className="mx-auto w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl flex items-center justify-center mb-6 shadow-xl transform hover:scale-105 transition-transform duration-300">
             <Hotel className="w-12 h-12 text-white" />
           </div>
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-2">
+          <h1 className="text-4xl font-extrabold text-red-600 mb-2">
             Welcome Back
           </h1>
           <p className="text-base text-gray-600">
