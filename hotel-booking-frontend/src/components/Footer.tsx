@@ -1,3 +1,6 @@
+import { useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import {
   Building2,
   Mail,
@@ -12,16 +15,15 @@ import {
   Send,
   Loader2,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useState, useCallback } from "react";
-import { useForm } from "react-hook-form";
+
 import useAppContext from "../hooks/useAppContext";
+import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 /**
  * Newsletter subscription form data structure.
- * Contains the email address submitted by the user.
+ * Contains the email address submitted by the user for newsletter signup.
  */
 interface NewsletterFormData {
   email: string;
@@ -113,9 +115,10 @@ const Footer = () => {
               )}
             </button>
             <div
-              className={`${
-                isNewsletterOpen ? "block" : "hidden"
-              } md:block space-y-4`}
+              className={cn(
+                { block: isNewsletterOpen, hidden: !isNewsletterOpen },
+                "md:block space-y-4"
+              )}
             >
               <h3 className="text-xl font-bold hidden md:block">
                 Stay Updated
@@ -260,9 +263,10 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul
-              className={`${
-                isQuickLinksOpen ? "block" : "hidden"
-              } md:block space-y-2`}
+              className={cn(
+                { block: isQuickLinksOpen, hidden: !isQuickLinksOpen },
+                "md:block space-y-2"
+              )}
             >
               <li>
                 <Link
@@ -324,9 +328,10 @@ const Footer = () => {
             </button>
             <h3 className="text-lg font-semibold hidden md:block">Support</h3>
             <ul
-              className={`${
-                isSupportOpen ? "block" : "hidden"
-              } md:block space-y-2`}
+              className={cn(
+                { block: isSupportOpen, hidden: !isSupportOpen },
+                "md:block space-y-2"
+              )}
             >
               <li>
                 <Link
@@ -390,9 +395,10 @@ const Footer = () => {
               Contact Us
             </h3>
             <div
-              className={`${
-                isContactOpen ? "block" : "hidden"
-              } md:block space-y-3`}
+              className={cn(
+                { block: isContactOpen, hidden: !isContactOpen },
+                "md:block space-y-3"
+              )}
             >
               <div className="flex items-center space-x-3">
                 <Mail
