@@ -10,7 +10,7 @@ const LayoutRender = () => {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-md p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4 outline outline-2 outline-red-500">
             Welcome to MernHolidays
           </h1>
           <p className="text-gray-600 text-lg">
