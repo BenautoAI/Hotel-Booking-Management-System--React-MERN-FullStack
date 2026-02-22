@@ -9,7 +9,20 @@ import {
   Building2,
   Calendar,
   LogIn,
+  User,
+  Settings,
 } from "lucide-react";
+import { Avatar } from "./ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { useQuery } from "react-query";
+import * as apiClient from "../api-client";
 
 const Header = () => {
   const { isLoggedIn } = useAppContext();
@@ -93,7 +106,35 @@ const Header = () => {
                     API Status
                   </Link>
 
-                  <SignOutButton />
+                  {/* Profile Avatar with Dropdown */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="focus:outline-none">
+                      <div className="ml-2 cursor-pointer hover:opacity-80 transition-opacity">
+                        <ProfileAvatar />
+                      </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="end"
+                      className="w-56 bg-white border border-gray-200 shadow-lg"
+                    >
+                      <DropdownMenuLabel className="text-sm font-semibold text-gray-700">
+                        My Account
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator className="bg-gray-200" />
+                      <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
+                        <User className="w-4 h-4 mr-2" />
+                        <span>Profile</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
+                        <Settings className="w-4 h-4 mr-2" />
+                        <span>Settings</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="bg-gray-200" />
+                      <div className="p-1">
+                        <SignOutButton />
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </>
               ) : (
                 <Link
@@ -128,6 +169,33 @@ const Header = () => {
         </div>
       </header>
     </>
+  );
+};
+
+// Profile Avatar Component
+const ProfileAvatar = () => {
+  const { data: user } = useQuery("fetchCurrentUser", apiClient.fetchCurrentUser, {
+    retry: false,
+    refetchOnWindowFocus: false,
+  });
+
+  const getUserName = () => {
+    if (user?.firstName && user?.lastName) {
+      return `${user.firstName} ${user.lastName}`;
+    }
+    if (user?.email) {
+      return user.email;
+    }
+    return "User";
+  };
+
+  return (
+    <Avatar
+      size="md"
+      src={undefined} // No image source for now, will show initials
+      fallback={getUserName()}
+      alt={getUserName()}
+    />
   );
 };
 
