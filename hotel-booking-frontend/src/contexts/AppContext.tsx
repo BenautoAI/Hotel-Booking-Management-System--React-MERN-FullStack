@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
@@ -29,6 +29,20 @@ export const AppContext = React.createContext<AppContext | undefined>(
 
 const stripePromise = loadStripe(STRIPE_PUB_KEY);
 
+/**
+ * Provider component for application-wide context.
+ * Manages authentication state, toast notifications, and global loading state.
+ * Memoizes context value to prevent unnecessary re-renders of dependent components.
+ *
+ * Features:
+ * - Auth state validation with localStorage fallback for JWT tokens
+ * - Global loading spinner with customizable messages
+ * - Toast notification system
+ * - Stripe promise initialization
+ *
+ * @param children - React components to wrap with AppContext
+ * @returns AppContext provider wrapping children
+ */
 export const AppContextProvider = ({
   children,
 }: {
@@ -43,17 +57,7 @@ export const AppContextProvider = ({
   // Simple check for stored tokens without API calls
   const checkStoredAuth = () => {
     const localToken = localStorage.getItem("session_id");
-    const userId = localStorage.getItem("user_id");
-
-    // Check if we have both token and user ID
-    const hasToken = !!localToken;
-    const hasUserId = !!userId;
-
-    if (hasToken && hasUserId) {
-      console.log("JWT authentication detected - token and user ID found");
-    }
-
-    return hasToken;
+    return !!localToken;
   };
 
   // Always run validation query - let it handle token checking internally
@@ -66,67 +70,33 @@ export const AppContextProvider = ({
       staleTime: 5 * 60 * 1000, // 5 minutes
       // Always enabled - let validateToken handle missing tokens
       enabled: true,
-      // Add fallback for JWT authentication
+      // Fallback for JWT authentication - no logging in production
       onError: (error: any) => {
-        // If validateToken fails, check if we have a token in localStorage
-        const storedToken = localStorage.getItem("session_id");
-        const storedUserId = localStorage.getItem("user_id");
-
-        if (storedToken && error.response?.status === 401) {
-          console.log(
-            "JWT token found but validation failed - possible token expiration"
-          );
-
-          // If we also have a user ID, we can be more confident it's a valid session
-          if (storedUserId) {
-            console.log("JWT session confirmed - using localStorage fallback");
+        if (import.meta.env.DEV) {
+          const storedToken = localStorage.getItem("session_id");
+          if (storedToken && error.response?.status === 401) {
+            console.log("Auth validation failed - checking localStorage fallback");
           }
         }
       },
     }
   );
 
-  // Debug logging to understand the state
-  console.log("Auth Debug:", {
-    isLoading,
-    isError,
-    hasData: !!data,
-    hasStoredToken: checkStoredAuth(),
-    hasUserId: !!localStorage.getItem("user_id"),
-    data,
-  });
-
-  // Simple logic: logged in if we have valid data OR stored token as fallback
-  const isLoggedIn =
-    (!isLoading && !isError && !!data) || (checkStoredAuth() && isError); // Use stored token only if validation failed
-
-  // Additional fallback: if we just logged in and have a token, consider logged in
-  const justLoggedIn = checkStoredAuth() && !isLoading && !data && !isError;
-
-  // Enhanced JWT authentication detection and fallback
-  const isJWTFallback = () => {
-    // Check if we have a token but validation failed (typical JWT fallback behavior)
+  // Compute logged-in state with simplified fallback logic
+  // Depends on: query result (isLoading, isError, data)
+  const finalIsLoggedIn = useMemo(() => {
+    // Primary: Valid data from API
+    if (!isLoading && !isError && !!data) return true;
+    
+    // Fallback: Stored token when validation fails (JWT mode)
     const hasStoredToken = checkStoredAuth();
     const hasUserId = !!localStorage.getItem("user_id");
-    const isFallback = hasStoredToken && isError && !data && hasUserId;
-
-    if (isFallback) {
-      console.log(
-        "JWT fallback mode detected - using localStorage authentication"
-      );
+    if (hasStoredToken && (isError || (!isLoading && !data)) && hasUserId) {
+      return true;
     }
-
-    return isFallback;
-  };
-
-  const finalIsLoggedIn = isLoggedIn || justLoggedIn || isJWTFallback();
-
-  console.log(
-    "Final isLoggedIn:",
-    finalIsLoggedIn,
-    "JWT Fallback:",
-    isJWTFallback()
-  );
+    
+    return false;
+  }, [isLoading, isError, data]);
 
   const showToast = (toastMessage: ToastMessage) => {
     const variant =
@@ -154,18 +124,22 @@ export const AppContextProvider = ({
     setIsGlobalLoading(false);
   };
 
+  // Memoize context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      showToast,
+      isLoggedIn: finalIsLoggedIn,
+      stripePromise,
+      showGlobalLoading,
+      hideGlobalLoading,
+      isGlobalLoading,
+      globalLoadingMessage,
+    }),
+    [finalIsLoggedIn, isGlobalLoading, globalLoadingMessage]
+  );
+
   return (
-    <AppContext.Provider
-      value={{
-        showToast,
-        isLoggedIn: finalIsLoggedIn,
-        stripePromise,
-        showGlobalLoading,
-        hideGlobalLoading,
-        isGlobalLoading,
-        globalLoadingMessage,
-      }}
-    >
+    <AppContext.Provider value={contextValue}>
       {isGlobalLoading && <LoadingSpinner message={globalLoadingMessage} />}
       {children}
     </AppContext.Provider>

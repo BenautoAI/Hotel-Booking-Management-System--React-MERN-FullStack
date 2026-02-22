@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 export type SearchContext = {
   destination: string;
@@ -25,6 +25,22 @@ type SearchContextProviderProps = {
   children: React.ReactNode;
 };
 
+/**
+ * Provider component for search state management.
+ * Manages hotel search filters (destination, dates, guest counts).
+ * Persists search values to sessionStorage for maintaining state across navigation.
+ * Memoizes context value to prevent unnecessary re-renders of dependent components.
+ *
+ * Features:
+ * - Destination and date range management
+ * - Guest count tracking (adults and children)
+ * - Hotel ID persistence
+ * - Session-based storage for search state
+ * - Cache management for Google Places data
+ *
+ * @param children - React components to wrap with SearchContext
+ * @returns SearchContext provider wrapping children
+ */
 export const SearchContextProvider = ({
   children,
 }: SearchContextProviderProps) => {
@@ -103,19 +119,24 @@ export const SearchContextProvider = ({
     }
   };
 
+  // Memoize context value to prevent unnecessary re-renders
+  // Re-compute when any search state or handler changes
+  const contextValue = useMemo(
+    () => ({
+      destination,
+      checkIn,
+      checkOut,
+      adultCount,
+      childCount,
+      hotelId,
+      saveSearchValues,
+      clearSearchValues,
+    }),
+    [destination, checkIn, checkOut, adultCount, childCount, hotelId, saveSearchValues, clearSearchValues]
+  );
+
   return (
-    <SearchContext.Provider
-      value={{
-        destination,
-        checkIn,
-        checkOut,
-        adultCount,
-        childCount,
-        hotelId,
-        saveSearchValues,
-        clearSearchValues,
-      }}
-    >
+    <SearchContext.Provider value={contextValue}>
       {children}
     </SearchContext.Provider>
   );
