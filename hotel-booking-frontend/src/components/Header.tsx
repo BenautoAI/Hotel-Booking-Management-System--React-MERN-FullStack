@@ -1,7 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import useAppContext from "../hooks/useAppContext";
-import useSearchContext from "../hooks/useSearchContext";
-import SignOutButton from "./SignOutButton";
 import {
   FileText,
   Activity,
@@ -11,8 +8,13 @@ import {
   LogIn,
 } from "lucide-react";
 
+import useAppContext from "../hooks/useAppContext";
+import useSearchContext from "../hooks/useSearchContext";
+import SignOutButton from "./SignOutButton";
+import { UserAvatar } from "./UserAvatar";
+
 const Header = () => {
-  const { isLoggedIn } = useAppContext();
+  const { isLoggedIn, user } = useAppContext();
   const search = useSearchContext();
   const navigate = useNavigate();
 
@@ -92,6 +94,15 @@ const Header = () => {
                     <Activity className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                     API Status
                   </Link>
+
+                  {/* User Avatar */}
+                  <div className="ml-2">
+                    <UserAvatar
+                      firstName={user?.firstName}
+                      lastName={user?.lastName}
+                      size="md"
+                    />
+                  </div>
 
                   <SignOutButton />
                 </>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import LoadingSpinner from "../components/LoadingSpinner";
 import { useQuery } from "react-query";
-import * as apiClient from "../api-client";
 import { loadStripe, Stripe } from "@stripe/stripe-js";
+
+import LoadingSpinner from "../components/LoadingSpinner";
 import { useToast } from "../hooks/use-toast";
+import * as apiClient from "../api-client";
 
 const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || "";
 
@@ -13,9 +14,21 @@ type ToastMessage = {
   type: "SUCCESS" | "ERROR" | "INFO";
 };
 
+/**
+ * User data exposed through AppContext from validateToken response.
+ * Contains essential user information for authentication and personalization.
+ */
+export type UserContextData = {
+  userId: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+};
+
 export type AppContext = {
   showToast: (toastMessage: ToastMessage) => void;
   isLoggedIn: boolean;
+  user: UserContextData | null;
   stripePromise: Promise<Stripe | null>;
   showGlobalLoading: (message?: string) => void;
   hideGlobalLoading: () => void;
@@ -29,6 +42,13 @@ export const AppContext = React.createContext<AppContext | undefined>(
 
 const stripePromise = loadStripe(STRIPE_PUB_KEY);
 
+/**
+ * Provider component that manages global app state including authentication status,
+ * user data, loading states, and toast notifications.
+ * Wraps the application to provide context values to all components.
+ *
+ * @param children - React components to be wrapped by the provider
+ */
 export const AppContextProvider = ({
   children,
 }: {
@@ -159,6 +179,7 @@ export const AppContextProvider = ({
       value={{
         showToast,
         isLoggedIn: finalIsLoggedIn,
+        user: data || null,
         stripePromise,
         showGlobalLoading,
         hideGlobalLoading,
