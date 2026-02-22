@@ -108,7 +108,7 @@ const HeaderDemo = () => {
               <Header />
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="bg-white rounded-lg shadow p-6">
-                  <h2 className="text-2xl font-bold mb-4">Header Component Demo</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-red-600">Header Component Demo</h2>
                   <p className="text-gray-600 mb-4">
                     Toggle between logged-in and logged-out states to see different navigation options.
                   </p>
