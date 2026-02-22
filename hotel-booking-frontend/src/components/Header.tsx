@@ -9,7 +9,15 @@ import {
   Building2,
   Calendar,
   LogIn,
+  Menu,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const Header = () => {
   const { isLoggedIn } = useAppContext();
@@ -106,23 +114,84 @@ const Header = () => {
               )}
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu */}
             <div className="md:hidden">
-              <button className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+                    aria-label="Open mobile menu"
+                  >
+                    <Menu className="w-6 h-6" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="w-56 bg-white mr-4 mt-2"
+                  align="end"
+                  sideOffset={8}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+                  {isLoggedIn ? (
+                    <>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/analytics"
+                          className="flex items-center w-full cursor-pointer"
+                        >
+                          <BarChart3 className="w-4 h-4 mr-2" />
+                          Analytics
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/my-bookings"
+                          className="flex items-center w-full cursor-pointer"
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          My Bookings
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/my-hotels"
+                          className="flex items-center w-full cursor-pointer"
+                        >
+                          <Building2 className="w-4 h-4 mr-2" />
+                          My Hotels
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/api-docs"
+                          className="flex items-center w-full cursor-pointer"
+                        >
+                          <FileText className="w-4 h-4 mr-2" />
+                          API Docs
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/api-status"
+                          className="flex items-center w-full cursor-pointer"
+                        >
+                          <Activity className="w-4 h-4 mr-2" />
+                          API Status
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  ) : (
+                    <DropdownMenuItem asChild>
+                      <Link
+                        to="/sign-in"
+                        className="flex items-center w-full cursor-pointer text-primary-600 font-semibold"
+                      >
+                        <LogIn className="w-4 h-4 mr-2" />
+                        Sign In
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
