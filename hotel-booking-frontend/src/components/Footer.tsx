@@ -63,13 +63,13 @@ const SOCIAL_LINKS = [
  */
 const FooterLinkSection = ({ title, links }: FooterSection) => (
   <div className="space-y-4">
-    <h3 className="text-lg font-semibold text-white">{title}</h3>
+    <h3 className="text-lg font-semibold text-red-500">{title}</h3>
     <ul className="space-y-2">
       {links.map((link) => (
         <li key={link.label}>
           <a
             href={link.href}
-            className="text-gray-300 hover:text-white transition-colors duration-200"
+            className="text-red-400 hover:text-red-500 transition-colors duration-200"
           >
             {link.label}
           </a>
@@ -88,9 +88,9 @@ const CompanyInfo = () => (
       <div className="bg-white p-2 rounded-lg">
         <Building2 className="w-6 h-6 text-primary-600" />
       </div>
-      <span className="text-2xl font-bold text-white">MernHolidays</span>
+      <span className="text-2xl font-bold text-red-500">MernHolidays</span>
     </div>
-    <p className="text-gray-300 leading-relaxed">
+    <p className="text-red-400 leading-relaxed">
       Discover amazing hotels, resorts, and accommodations worldwide. Book with
       confidence and enjoy unforgettable experiences.
     </p>
@@ -99,7 +99,7 @@ const CompanyInfo = () => (
         <a
           key={label}
           href="#"
-          className="text-gray-300 hover:text-white transition-colors duration-200 hover:scale-110 transform"
+          className="text-red-400 hover:text-red-500 transition-colors duration-200 hover:scale-110 transform"
           aria-label={label}
         >
           <Icon className="w-5 h-5" />
@@ -114,12 +114,12 @@ const CompanyInfo = () => (
  */
 const ContactSection = ({ contacts }: { contacts: ContactInfo[] }) => (
   <div className="space-y-4">
-    <h3 className="text-lg font-semibold text-white">Contact Us</h3>
+    <h3 className="text-lg font-semibold text-red-500">Contact Us</h3>
     <div className="space-y-3">
       {contacts.map(({ icon, label, value }) => (
         <div key={label} className="flex items-center space-x-3">
-          <div className="text-primary-300">{icon}</div>
-          <span className="text-gray-300">{value}</span>
+          <div className="text-red-400">{icon}</div>
+          <span className="text-red-400">{value}</span>
         </div>
       ))}
     </div>
@@ -130,8 +130,8 @@ const ContactSection = ({ contacts }: { contacts: ContactInfo[] }) => (
  * Renders the bottom footer bar with copyright and policy links
  */
 const FooterBottom = () => (
-  <div className="border-t border-primary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-    <p className="text-gray-300 text-sm">
+  <div className="border-t border-red-600 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p className="text-red-400 text-sm">
       © 2025 MernHolidays. All rights reserved.
     </p>
     <div className="flex space-x-6">
@@ -139,7 +139,7 @@ const FooterBottom = () => (
         <a
           key={link.label}
           href={link.href}
-          className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
+          className="text-red-400 hover:text-red-500 text-sm transition-colors duration-200"
         >
           {link.label}
         </a>
@@ -174,7 +174,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-primary-800 to-primary-900 text-white mt-auto">
+    <footer className="bg-gradient-to-r from-red-700 to-red-800 text-red-100 mt-auto">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
