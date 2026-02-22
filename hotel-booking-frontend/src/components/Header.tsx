@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
-import SignOutButton from "./SignOutButton";
+import UserDropdownMenu from "./UserDropdownMenu";
+import MobileMenu from "./MobileMenu";
 import {
   FileText,
   Activity,
@@ -9,12 +10,23 @@ import {
   Building2,
   Calendar,
   LogIn,
+  Menu,
 } from "lucide-react";
+import { useState } from "react";
 
+/**
+ * Main navigation header component for the hotel booking application.
+ * Displays logo, desktop navigation links, user dropdown menu when authenticated,
+ * and mobile menu button with slide-in drawer for mobile navigation.
+ * Includes search context clearing on home button click.
+ *
+ * @returns Header component with navigation and mobile menu functionality
+ */
 const Header = () => {
   const { isLoggedIn } = useAppContext();
   const search = useSearchContext();
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
     // Clear search context when going to home page
@@ -59,7 +71,6 @@ const Header = () => {
                     Analytics
                   </Link>
 
-                  {/* <div className="w-px h-6 bg-white/20 mx-2"></div> */}
                   <Link
                     className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/my-bookings"
@@ -93,7 +104,10 @@ const Header = () => {
                     API Status
                   </Link>
 
-                  <SignOutButton />
+                  {/* User Dropdown Menu */}
+                  <div className="ml-2">
+                    <UserDropdownMenu />
+                  </div>
                 </>
               ) : (
                 <Link
@@ -108,25 +122,23 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
               </button>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
     </>
   );
 };
