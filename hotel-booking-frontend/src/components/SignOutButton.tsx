@@ -1,22 +1,29 @@
 import { useQueryClient } from "react-query";
-import { useMutationWithLoading } from "../hooks/useLoadingHooks";
-import * as apiClient from "../api-client";
-import useAppContext from "../hooks/useAppContext";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Trash2, RefreshCw, ChevronDown } from "lucide-react";
+import { LogOut, Trash2, RefreshCw } from "lucide-react";
+
+import { useMutationWithLoading } from "../hooks/useLoadingHooks";
+import useAppContext from "../hooks/useAppContext";
+import * as apiClient from "../api-client";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+/**
+ * SignOutButton component that renders menu items for sign out actions
+ * Used within dropdown menus in both desktop and mobile navigation contexts
+ * Includes development utilities for clearing auth state and storage
+ */
 const SignOutButton = () => {
   const queryClient = useQueryClient();
   const { showToast } = useAppContext();
   const navigate = useNavigate();
 
+  /**
+   * Sign out mutation with loading state and toast notifications
+   * Invalidates the validateToken query to update auth state
+   */
   const mutation = useMutationWithLoading(apiClient.signOut, {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
@@ -39,6 +46,10 @@ const SignOutButton = () => {
     loadingMessage: "Signing out...",
   });
 
+  /**
+   * Clear auth state mutation for development/debugging purposes
+   * Only available in non-production environments
+   */
   const clearAuthMutation = useMutationWithLoading(apiClient.signOut, {
     onSuccess: async () => {
       await queryClient.invalidateQueries("validateToken");
@@ -61,6 +72,10 @@ const SignOutButton = () => {
     loadingMessage: "Clearing auth state...",
   });
 
+  /**
+   * Clear all browser storage (localStorage, sessionStorage, cookies)
+   * Development utility for testing incognito mode and storage cleanup
+   */
   const clearAllStorage = () => {
     apiClient.clearAllStorage();
     showToast({
@@ -72,52 +87,52 @@ const SignOutButton = () => {
     window.location.reload();
   };
 
+  /**
+   * Handle sign out action
+   */
   const handleSignOut = () => {
     mutation.mutate(undefined);
   };
 
+  /**
+   * Handle clear auth state action
+   */
   const handleClearAuth = () => {
     clearAuthMutation.mutate(undefined);
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className="flex items-center bg-white text-primary-600 px-6 py-2 rounded-lg font-semibold hover:bg-primary-50 hover:shadow-medium transition-all duration-200 group">
-          <LogOut className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-          Sign Out
-          <ChevronDown className="w-4 h-4 ml-1 group-hover:scale-110 transition-transform" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-white" align="end">
-        <DropdownMenuItem onClick={handleSignOut} className="text-primary-600">
-          <LogOut className="w-4 h-4 mr-2" />
-          Sign Out
-        </DropdownMenuItem>
+    <>
+      <DropdownMenuItem onClick={handleSignOut} className="text-primary-600">
+        <LogOut className="w-4 h-4 mr-2" />
+        Sign Out
+      </DropdownMenuItem>
 
-        {/* Development utilities - only show in development */}
-        {!import.meta.env.PROD && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={handleClearAuth}
-              className="text-red-600"
-            >
-              <Trash2 className="w-4 h-4 mr-2" />
-              Clear Auth State
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={clearAllStorage}
-              className="text-orange-600"
-            >
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Clear All Storage
-            </DropdownMenuItem>
-          </>
-        )}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      {/* Development utilities - only show in development */}
+      {!import.meta.env.PROD && (
+        <>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            onClick={handleClearAuth}
+            className="text-red-600"
+          >
+            <Trash2 className="w-4 h-4 mr-2" />
+            Clear Auth State
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={clearAllStorage}
+            className="text-orange-600"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Clear All Storage
+          </DropdownMenuItem>
+        </>
+      )}
+    </>
   );
 };
 
+/**
+ * Export SignOutButton for use in dropdown menus
+ */
 export default SignOutButton;
