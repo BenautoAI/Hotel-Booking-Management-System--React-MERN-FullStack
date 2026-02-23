@@ -39,7 +39,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     };
 
     const containerClasses = cn(
-      "relative inline-flex items-center justify-center overflow-hidden rounded-full",
+      "relative inline-flex items-center justify-center overflow-hidden rounded-full border-2 border-red-500",
       sizeClasses[size],
       variant === "gradient" && "p-[3px]",
       className
