@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
-import SignOutButton from "./SignOutButton";
+import UserAvatar from "./UserAvatar";
 import {
   FileText,
   Activity,
@@ -41,7 +41,7 @@ const Header = () => {
               <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
+              <span className="text-2xl font-bold text-red-500 tracking-tight group-hover:text-red-400 transition-colors">
                 MernHolidays
               </span>
             </button>
@@ -93,7 +93,9 @@ const Header = () => {
                     API Status
                   </Link>
 
-                  <SignOutButton />
+                  <div className="ml-2">
+                    <UserAvatar />
+                  </div>
                 </>
               ) : (
                 <Link
