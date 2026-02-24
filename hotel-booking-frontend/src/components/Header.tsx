@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import useSearchContext from "../hooks/useSearchContext";
 import SignOutButton from "./SignOutButton";
+import { useState } from "react";
 import {
   FileText,
   Activity,
@@ -9,17 +10,31 @@ import {
   Building2,
   Calendar,
   LogIn,
+  Menu,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
 
 const Header = () => {
   const { isLoggedIn } = useAppContext();
   const search = useSearchContext();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
     // Clear search context when going to home page
     search.clearSearchValues();
     navigate("/");
+    setMobileMenuOpen(false);
+  };
+
+  const handleNavigationClick = () => {
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -108,21 +123,97 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+              <Dialog open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <DialogTrigger asChild>
+                  <button className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <Menu className="w-6 h-6" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="w-full max-w-sm bg-white rounded-lg">
+                  <DialogTitle className="sr-only">Navigation Menu</DialogTitle>
+                  <DialogDescription className="sr-only">Mobile navigation menu with links to main pages</DialogDescription>
+                  <div className="flex flex-col space-y-4 py-4">
+                    {isLoggedIn ? (
+                      <>
+                        <Link
+                          to="/"
+                          className="text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          Home
+                        </Link>
+                        <Link
+                          to="/analytics"
+                          className="flex items-center text-base font-semibold text-gray-700 hover:text-primary-600 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <BarChart3 className="w-4 h-4 mr-2" />
+                          Analytics
+                        </Link>
+                        <Link
+                          to="/my-bookings"
+                          className="flex items-center text-base font-semibold text-gray-700 hover:text-primary-600 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          My Bookings
+                        </Link>
+                        <Link
+                          to="/my-hotels"
+                          className="flex items-center text-base font-semibold text-gray-700 hover:text-primary-600 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <Building2 className="w-4 h-4 mr-2" />
+                          My Hotels
+                        </Link>
+                        <Link
+                          to="/api-docs"
+                          className="flex items-center text-base font-semibold text-gray-700 hover:text-primary-600 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <FileText className="w-4 h-4 mr-2" />
+                          API Docs
+                        </Link>
+                        <Link
+                          to="/api-status"
+                          className="flex items-center text-base font-semibold text-gray-700 hover:text-primary-600 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <Activity className="w-4 h-4 mr-2" />
+                          API Status
+                        </Link>
+                        <div className="border-t pt-4">
+                          <button
+                            onClick={handleNavigationClick}
+                            className="w-full flex items-center justify-center bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                          >
+                            <LogIn className="w-4 h-4 mr-2" />
+                            Sign Out
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          to="/"
+                          className="text-base font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          Home
+                        </Link>
+                        <Link
+                          to="/sign-in"
+                          className="w-full flex items-center justify-center bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                          onClick={handleNavigationClick}
+                        >
+                          <LogIn className="w-4 h-4 mr-2" />
+                          Sign In
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
