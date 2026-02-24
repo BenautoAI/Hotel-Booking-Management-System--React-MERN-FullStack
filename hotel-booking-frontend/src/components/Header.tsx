@@ -41,7 +41,7 @@ const Header = () => {
               <div className="bg-white p-2 rounded-lg shadow-soft group-hover:shadow-medium transition-all duration-300">
                 <Building2 className="w-6 h-6 text-primary-600" />
               </div>
-              <span className="text-2xl font-bold text-white tracking-tight group-hover:text-primary-100 transition-colors">
+              <span className="text-2xl font-bold text-red-500 tracking-tight group-hover:text-primary-100 transition-colors">
                 MernHolidays
               </span>
             </button>
@@ -52,7 +52,7 @@ const Header = () => {
                 <>
                   {/* Analytics Dashboard Link */}
                   <Link
-                    className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
+                    className="flex items-center text-red-500 hover:text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/analytics"
                   >
                     <BarChart3 className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
@@ -61,14 +61,14 @@ const Header = () => {
 
                   {/* <div className="w-px h-6 bg-white/20 mx-2"></div> */}
                   <Link
-                    className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
+                    className="flex items-center text-red-500 hover:text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/my-bookings"
                   >
                     <Calendar className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                     My Bookings
                   </Link>
                   <Link
-                    className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
+                    className="flex items-center text-red-500 hover:text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/my-hotels"
                   >
                     <Building2 className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
@@ -77,7 +77,7 @@ const Header = () => {
 
                   {/* API Documentation Link */}
                   <Link
-                    className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
+                    className="flex items-center text-red-500 hover:text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/api-docs"
                   >
                     <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
@@ -86,7 +86,7 @@ const Header = () => {
 
                   {/* API Status Link */}
                   <Link
-                    className="flex items-center text-white/90 hover:text-white px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
+                    className="flex items-center text-red-500 hover:text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-white/10 transition-all duration-200 group"
                     to="/api-status"
                   >
                     <Activity className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
