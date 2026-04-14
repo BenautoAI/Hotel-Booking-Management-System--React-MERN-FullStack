@@ -148,7 +148,7 @@ const ApiStatus = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Checking API status...</p>
+          <p className="text-red-600">Checking API status...</p>
         </div>
       </div>
     );
@@ -159,10 +159,10 @@ const ApiStatus = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-red-900 mb-2">
             API Unavailable
           </h2>
-          <p className="text-gray-600 mb-4">
+          <p className="text-red-600 mb-4">
             Unable to connect to the API server.
           </p>
           <button
@@ -181,8 +181,8 @@ const ApiStatus = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">API Status</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl font-bold text-red-900 mb-4">API Status</h1>
+          <p className="text-xl text-red-600">
             Real-time monitoring of our hotel booking API health and performance
           </p>
         </div>
@@ -192,7 +192,7 @@ const ApiStatus = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <Server className="w-8 h-8 text-blue-600 mr-3" />
-              <h2 className="text-2xl font-semibold text-gray-900">
+              <h2 className="text-2xl font-semibold text-red-900">
                 Overall Status
               </h2>
             </div>
@@ -216,7 +216,7 @@ const ApiStatus = () => {
             {/* API Status */}
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-red-600">
                   API Status
                 </span>
                 {getStatusIcon(healthData?.status || "unknown")}
@@ -233,7 +233,7 @@ const ApiStatus = () => {
             {/* Database Status */}
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-red-600">
                   Database
                 </span>
                 {getStatusIcon(healthData?.database.status || "unknown")}
@@ -250,12 +250,12 @@ const ApiStatus = () => {
             {/* Uptime */}
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-red-600">
                   Uptime
                 </span>
-                <Clock className="w-4 h-4 text-gray-400" />
+                <Clock className="w-4 h-4 text-red-400" />
               </div>
-              <span className="text-lg font-semibold text-gray-900">
+              <span className="text-lg font-semibold text-red-900">
                 {healthData?.uptime ? formatUptime(healthData.uptime) : "N/A"}
               </span>
             </div>
@@ -263,12 +263,12 @@ const ApiStatus = () => {
             {/* Memory Usage */}
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-red-600">
                   Memory Usage
                 </span>
-                <HardDrive className="w-4 h-4 text-gray-400" />
+                <HardDrive className="w-4 h-4 text-red-400" />
               </div>
-              <span className="text-lg font-semibold text-gray-900">
+              <span className="text-lg font-semibold text-red-900">
                 {healthData?.memory.percentage || 0}%
               </span>
             </div>
@@ -280,13 +280,13 @@ const ApiStatus = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* System Information */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <h3 className="text-lg font-semibold text-red-900 mb-4 flex items-center">
                 <Cpu className="w-5 h-5 text-blue-600 mr-2" />
                 System Information
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Platform:</span>
+                  <span className="text-red-600">Platform:</span>
                   <span className="font-medium">
                     {detailedData.system.platform}
                   </span>

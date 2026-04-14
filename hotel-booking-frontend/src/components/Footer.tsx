@@ -22,32 +22,32 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold">MernHolidays</span>
             </div>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-red-300 leading-relaxed">
               Discover amazing hotels, resorts, and accommodations worldwide.
               Book with confidence and enjoy unforgettable experiences.
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-red-300 hover:text-white transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-red-300 hover:text-white transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-red-300 hover:text-white transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-red-300 hover:text-white transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -108,7 +108,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-red-300 hover:text-white transition-colors"
                 >
                   Help Center
                 </a>
@@ -116,7 +116,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-red-300 hover:text-white transition-colors"
                 >
                   Booking Guide
                 </a>
@@ -124,7 +124,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-red-300 hover:text-white transition-colors"
                 >
                   Cancellation Policy
                 </a>
@@ -132,7 +132,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-red-300 hover:text-white transition-colors"
                 >
                   Privacy Policy
                 </a>
@@ -140,7 +140,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-red-300 hover:text-white transition-colors"
                 >
                   Terms of Service
                 </a>
@@ -154,15 +154,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary-300" />
-                <span className="text-gray-300">support@mernholidays.com</span>
+                <span className="text-red-300">support@mernholidays.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-300" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-red-300">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-primary-300" />
-                <span className="text-gray-300">
+                <span className="text-red-300">
                   123 Travel St, Tourism City
                 </span>
               </div>
@@ -172,25 +172,25 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-300 text-sm">
+          <p className="text-red-300 text-sm">
             © 2025 MernHolidays. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
-              className="text-gray-300 hover:text-white text-sm transition-colors"
+              className="text-red-300 hover:text-white text-sm transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-gray-300 hover:text-white text-sm transition-colors"
+              className="text-red-300 hover:text-white text-sm transition-colors"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-gray-300 hover:text-white text-sm transition-colors"
+              className="text-red-300 hover:text-white text-sm transition-colors"
             >
               Cookie Policy
             </a>

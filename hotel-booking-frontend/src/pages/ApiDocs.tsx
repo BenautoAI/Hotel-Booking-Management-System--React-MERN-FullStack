@@ -143,7 +143,7 @@ const ApiDocs = () => {
       case "DELETE":
         return "bg-red-100 text-red-800";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-red-100 text-red-800";
     }
   };
 
@@ -152,10 +152,10 @@ const ApiDocs = () => {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-red-900 mb-4">
             API Documentation
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-red-600 max-w-3xl mx-auto">
             Comprehensive documentation for the Hotel Booking API. Explore
             endpoints, understand authentication, and integrate with our
             services.
@@ -164,15 +164,15 @@ const ApiDocs = () => {
 
         {/* API Base URL */}
         <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-red-900 mb-4">
             Base URL
           </h2>
-          <div className="bg-gray-100 rounded-lg p-4">
-            <code className="text-lg font-mono text-gray-800">
+          <div className="bg-red-100 rounded-lg p-4">
+            <code className="text-lg font-mono text-red-800">
               {apiBaseUrl}
             </code>
           </div>
-          <p className="text-gray-600 mt-2">
+          <p className="text-red-600 mt-2">
             All API endpoints are relative to this base URL.
           </p>
         </div>
@@ -212,7 +212,7 @@ const ApiDocs = () => {
               <div className="border-b border-gray-200 px-6 py-4">
                 <div className="flex items-center">
                   <div className="text-blue-600 mr-3">{category.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-red-900">
                     {category.category}
                   </h3>
                 </div>
@@ -229,11 +229,11 @@ const ApiDocs = () => {
                         >
                           {endpoint.method}
                         </span>
-                        <code className="text-sm font-mono text-gray-800 bg-gray-100 px-2 py-1 rounded">
+                        <code className="text-sm font-mono text-red-800 bg-red-100 px-2 py-1 rounded">
                           {endpoint.path}
                         </code>
                       </div>
-                      <span className="text-gray-600 text-sm">
+                      <span className="text-red-600 text-sm">
                         {endpoint.description}
                       </span>
                     </div>
@@ -246,19 +246,19 @@ const ApiDocs = () => {
 
         {/* Authentication Section */}
         <div className="bg-white rounded-lg shadow-sm border p-6 mt-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-red-900 mb-4">
             Authentication
           </h2>
           <div className="prose max-w-none">
-            <p className="text-gray-600 mb-4">
+            <p className="text-red-600 mb-4">
               The API uses JWT (JSON Web Tokens) for authentication. Most
               endpoints require authentication via HTTP-only cookies.
             </p>
-            <div className="bg-gray-100 rounded-lg p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">
+            <div className="bg-red-100 rounded-lg p-4">
+              <h4 className="font-semibold text-red-900 mb-2">
                 Authentication Flow:
               </h4>
-              <ol className="list-decimal list-inside text-gray-700 space-y-1">
+              <ol className="list-decimal list-inside text-red-700 space-y-1">
                 <li>Register or login to receive a JWT token</li>
                 <li>Token is automatically stored in HTTP-only cookies</li>
                 <li>Include credentials in subsequent requests</li>
@@ -270,7 +270,7 @@ const ApiDocs = () => {
 
         {/* Rate Limiting */}
         <div className="bg-white rounded-lg shadow-sm border p-6 mt-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-red-900 mb-4">
             Rate Limiting
           </h2>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -287,15 +287,15 @@ const ApiDocs = () => {
 
         {/* Error Handling */}
         <div className="bg-white rounded-lg shadow-sm border p-6 mt-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-red-900 mb-4">
             Error Handling
           </h2>
           <div className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900">
+              <h4 className="font-semibold text-red-900">
                 Standard Error Response:
               </h4>
-              <pre className="bg-gray-100 rounded-lg p-4 text-sm overflow-x-auto">
+              <pre className="bg-red-100 rounded-lg p-4 text-sm overflow-x-auto">
                 {`{
   "error": "Error message",
   "message": "Detailed error description"

@@ -186,7 +186,7 @@ const AnalyticsDashboard = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading business insights data...</p>
+          <p className="text-red-600">Loading business insights data...</p>
         </div>
       </div>
     );
@@ -216,10 +216,10 @@ const AnalyticsDashboard = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-red-900 mb-2">
               Business Insights Dashboard
             </h1>
-            <p className="text-gray-600">
+            <p className="text-red-600">
               Comprehensive insights into your hotel booking business
             </p>
           </div>
@@ -249,7 +249,7 @@ const AnalyticsDashboard = () => {
                     className={`flex items-center py-4 px-1 border-b-2 font-medium text-sm ${
                       activeTab === tab.id
                         ? "border-blue-500 text-blue-600"
-                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                        : "border-transparent text-red-500 hover:text-red-700 hover:border-red-300"
                     }`}
                   >
                     <Icon className="w-4 h-4 mr-2" />
@@ -272,10 +272,10 @@ const AnalyticsDashboard = () => {
                     <Building className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Hotels
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {formatNumber(analyticsData.overview.totalHotels)}
                     </p>
                   </div>
@@ -288,10 +288,10 @@ const AnalyticsDashboard = () => {
                     <Users className="w-6 h-6 text-green-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Users
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {formatNumber(analyticsData.overview.totalUsers)}
                     </p>
                   </div>
@@ -304,10 +304,10 @@ const AnalyticsDashboard = () => {
                     <Calendar className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Bookings
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {formatNumber(analyticsData.overview.totalBookings)}
                     </p>
                   </div>
@@ -320,10 +320,10 @@ const AnalyticsDashboard = () => {
                     <DollarSign className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Revenue
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {formatCurrency(analyticsData.overview.totalRevenue)}
                     </p>
                     <div className="flex items-center mt-1">
@@ -351,7 +351,7 @@ const AnalyticsDashboard = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
               {/* Daily Bookings Chart */}
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Daily Bookings
                 </h3>
                 <ResponsiveContainer width="100%" height={300}>
@@ -377,11 +377,11 @@ const AnalyticsDashboard = () => {
 
               {/* Popular Destinations */}
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Popular Destinations
                 </h3>
                 {/* Debug info */}
-                <div className="text-xs text-gray-500 mb-2">
+                <div className="text-xs text-red-500 mb-2">
                   Debug: {analyticsData.popularDestinations.length} destinations
                   found
                 </div>
@@ -541,11 +541,11 @@ const AnalyticsDashboard = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
               {/* Historical vs Forecast Bookings */}
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Booking Forecast
                 </h3>
                 {/* Debug info */}
-                <div className="text-xs text-gray-500 mb-2">
+                <div className="text-xs text-red-500 mb-2">
                   Debug: {forecastData.historical.length} historical +{" "}
                   {forecastData.forecasts.length} forecast points
                 </div>
@@ -587,11 +587,11 @@ const AnalyticsDashboard = () => {
 
               {/* Revenue Forecast */}
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Revenue Forecast
                 </h3>
                 {/* Debug info */}
-                <div className="text-xs text-gray-500 mb-2">
+                <div className="text-xs text-red-500 mb-2">
                   Debug: Revenue data points - Historical:{" "}
                   {forecastData.historical.length}, Forecast:{" "}
                   {forecastData.forecasts.length}
@@ -644,13 +644,13 @@ const AnalyticsDashboard = () => {
                     <Activity className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Memory Usage
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {performanceData.system.memory.percentage}%
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-red-500">
                       {performanceData.system.memory.used}MB /{" "}
                       {performanceData.system.memory.total}MB
                     </p>
@@ -664,11 +664,11 @@ const AnalyticsDashboard = () => {
                     <Server className="w-6 h-6 text-green-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">Uptime</p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-sm font-medium text-red-600">Uptime</p>
+                    <p className="text-2xl font-bold text-red-900">
                       {performanceData.application.uptime}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-red-500">
                       {Math.round(performanceData.system.uptime / 3600)}h{" "}
                       {Math.round((performanceData.system.uptime % 3600) / 60)}m
                     </p>
@@ -682,13 +682,13 @@ const AnalyticsDashboard = () => {
                     <Clock className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Response Time
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {performanceData.application.avgResponseTime}ms
                     </p>
-                    <p className="text-sm text-gray-500">Average</p>
+                    <p className="text-sm text-red-500">Average</p>
                   </div>
                 </div>
               </div>
@@ -699,14 +699,14 @@ const AnalyticsDashboard = () => {
                     <AlertCircle className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Error Rate
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {(performanceData.application.errorRate * 100).toFixed(2)}
                       %
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-red-500">
                       Requests per minute:{" "}
                       {performanceData.application.requestsPerMinute}
                     </p>
@@ -718,30 +718,30 @@ const AnalyticsDashboard = () => {
             {/* Database Metrics */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Database Overview
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Collections</span>
+                    <span className="text-red-600">Collections</span>
                     <span className="font-semibold">
                       {performanceData.database.collections}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Hotels</span>
+                    <span className="text-red-600">Total Hotels</span>
                     <span className="font-semibold">
                       {performanceData.database.totalHotels}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Bookings</span>
+                    <span className="text-red-600">Total Bookings</span>
                     <span className="font-semibold">
                       {performanceData.database.totalBookings}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Revenue</span>
+                    <span className="text-red-600">Total Revenue</span>
                     <span className="font-semibold">
                       {formatCurrency(performanceData.database.totalRevenue)}
                     </span>
@@ -750,30 +750,30 @@ const AnalyticsDashboard = () => {
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-lg font-semibold text-red-900 mb-4">
                   Recent Activity
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Today's Bookings</span>
+                    <span className="text-red-600">Today's Bookings</span>
                     <span className="font-semibold">
                       {performanceData.application.todayBookings}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">This Week's Bookings</span>
+                    <span className="text-red-600">This Week's Bookings</span>
                     <span className="font-semibold">
                       {performanceData.application.thisWeekBookings}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">CPU Usage (User)</span>
+                    <span className="text-red-600">CPU Usage (User)</span>
                     <span className="font-semibold">
                       {Math.round(performanceData.system.cpu.user / 1000)}ms
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">CPU Usage (System)</span>
+                    <span className="text-red-600">CPU Usage (System)</span>
                     <span className="font-semibold">
                       {Math.round(performanceData.system.cpu.system / 1000)}ms
                     </span>
@@ -785,7 +785,7 @@ const AnalyticsDashboard = () => {
         )}
 
         {/* Last Updated */}
-        <div className="text-center text-gray-500 text-sm mt-8">
+        <div className="text-center text-red-500 text-sm mt-8">
           Last updated:{" "}
           {analyticsData?.lastUpdated
             ? new Date(analyticsData.lastUpdated).toLocaleString()

@@ -58,7 +58,7 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
       case "refunded":
         return "bg-purple-100 text-purple-800 border-purple-200";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-red-100 text-red-800 border-red-200";
     }
   };
 
@@ -73,7 +73,7 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
       case "refunded":
         return "bg-purple-100 text-purple-800 border-purple-200";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-red-100 text-red-800 border-red-200";
     }
   };
 
@@ -132,7 +132,7 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
       case "future":
         return <Calendar className="w-4 h-4 text-blue-500" />;
       case "past":
-        return <Calendar className="w-4 h-4 text-gray-500" />;
+        return <Calendar className="w-4 h-4 text-red-500" />;
       default:
         return <Calendar className="w-4 h-4" />;
     }
@@ -146,10 +146,10 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
             <div className="flex items-center space-x-3">
               <Building2 className="w-6 h-6 text-primary-600" />
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-bold text-red-900">
                   Booking Log - {hotelName}
                 </h2>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-red-600 mt-1">
                   Manage and track all bookings for this hotel
                 </p>
               </div>
@@ -166,10 +166,10 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
         </DialogHeader>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-4 p-4 bg-gray-50 rounded-lg">
+        <div className="flex flex-wrap gap-4 p-4 bg-red-50 rounded-lg">
           <div className="flex items-center space-x-2">
-            <Filter className="w-4 h-4 text-gray-600" />
-            <span className="text-sm font-medium text-gray-700">Filters:</span>
+            <Filter className="w-4 h-4 text-red-600" />
+            <span className="text-sm font-medium text-red-700">Filters:</span>
           </div>
 
           <select
@@ -204,10 +204,10 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Bookings
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       {bookings.length}
                     </p>
                   </div>
@@ -222,7 +222,7 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Confirmed
                     </p>
                     <p className="text-2xl font-bold text-green-600">
@@ -244,10 +244,10 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-red-600">
                       Total Revenue
                     </p>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-red-900">
                       £
                       {bookings
                         .filter((b: BookingType) => b.paymentStatus === "paid")
@@ -270,7 +270,7 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Pending</p>
+                    <p className="text-sm font-medium text-red-600">Pending</p>
                     <p className="text-2xl font-bold text-yellow-600">
                       {
                         bookings.filter(
@@ -295,15 +295,15 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
             {isLoading ? (
               <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
-                <p className="text-gray-600 mt-2">Loading bookings...</p>
+                <p className="text-red-600 mt-2">Loading bookings...</p>
               </div>
             ) : !bookings || bookings.length === 0 ? (
               <div className="text-center py-12 flex flex-col items-center justify-center h-full">
-                <Building2 className="w-16 h-16 text-gray-400 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                <Building2 className="w-16 h-16 text-red-400 mb-4" />
+                <h3 className="text-xl font-semibold text-red-600 mb-2">
                   No Bookings Found
                 </h3>
-                <p className="text-gray-500 mb-4">
+                <p className="text-red-500 mb-4">
                   This hotel doesn't have any bookings yet.
                 </p>
                 <div className="bg-blue-50 rounded-lg p-4 max-w-md">
@@ -316,11 +316,11 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
               </div>
             ) : !filteredBookings || filteredBookings.length === 0 ? (
               <div className="text-center py-12 flex flex-col items-center justify-center h-full">
-                <Filter className="w-16 h-16 text-gray-400 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                <Filter className="w-16 h-16 text-red-400 mb-4" />
+                <h3 className="text-xl font-semibold text-red-600 mb-2">
                   No Matching Bookings
                 </h3>
-                <p className="text-gray-500 mb-4">
+                <p className="text-red-500 mb-4">
                   No bookings match your current filter criteria.
                 </p>
                 <div className="bg-yellow-50 rounded-lg p-4 max-w-md">
@@ -455,8 +455,8 @@ const BookingLogModal: React.FC<BookingLogModalProps> = ({
                               {/* Financial Information */}
                               <div className="space-y-2">
                                 <div className="flex items-center space-x-2 text-sm">
-                                  <CreditCard className="w-4 h-4 text-gray-500" />
-                                  <span className="text-gray-700">
+                                  <CreditCard className="w-4 h-4 text-red-500" />
+                                  <span className="text-red-700">
                                     Total: £
                                     {booking.totalCost?.toLocaleString()}
                                   </span>

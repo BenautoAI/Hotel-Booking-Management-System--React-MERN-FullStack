@@ -104,10 +104,10 @@ const MyHotels = () => {
         <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">
+              <p className="text-sm font-medium text-red-600">
                 Total Bookings
               </p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-2xl font-bold text-red-900">
                 {hotelData.reduce(
                   (sum, hotel) => sum + (hotel.totalBookings || 0),
                   0
@@ -123,8 +123,8 @@ const MyHotels = () => {
         <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Revenue</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm font-medium text-red-600">Total Revenue</p>
+              <p className="text-2xl font-bold text-red-900">
                 £
                 {hotelData
                   .reduce((sum, hotel) => sum + (hotel.totalRevenue || 0), 0)
@@ -140,8 +140,8 @@ const MyHotels = () => {
         <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Avg Rating</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm font-medium text-red-600">Avg Rating</p>
+              <p className="text-2xl font-bold text-red-900">
                 {hotelData.length > 0
                   ? (
                       hotelData.reduce(
@@ -187,7 +187,7 @@ const MyHotels = () => {
               </div>
 
               <div className="absolute top-4 right-4">
-                <Badge className="bg-white/90 text-gray-800">
+                <Badge className="bg-white/90 text-red-800">
                   <Star className="w-3 h-3 mr-1 text-yellow-500" />
                   {hotel.starRating}
                 </Badge>
@@ -196,23 +196,23 @@ const MyHotels = () => {
 
             {/* Hotel Content */}
             <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+              <h2 className="text-xl font-bold text-red-900 mb-2 group-hover:text-primary-600 transition-colors">
                 {hotel.name}
               </h2>
 
-              <p className="text-gray-600 mb-4 line-clamp-2">
+              <p className="text-red-600 mb-4 line-clamp-2">
                 {hotel.description}
               </p>
 
               {/* Hotel Details */}
               <div className="grid grid-cols-2 gap-4 mb-6 flex-grow">
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-2 text-sm text-red-600">
                   <BsMap className="w-4 h-4 text-primary-600" />
                   <span>
                     {hotel.city}, {hotel.country}
                   </span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-2 text-sm text-red-600">
                   <BsBuilding className="w-4 h-4 text-primary-600 flex-shrink-0" />
                   <div className="flex flex-wrap gap-1 min-h-[24px]">
                     {Array.isArray(hotel.type) ? (
@@ -235,11 +235,11 @@ const MyHotels = () => {
                     )}
                   </div>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-2 text-sm text-red-600">
                   <BiMoney className="w-4 h-4 text-primary-600" />
                   <span>£{hotel.pricePerNight} per night</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <div className="flex items-center space-x-2 text-sm text-red-600">
                   <BiHotel className="w-4 h-4 text-primary-600" />
                   <span>
                     {hotel.adultCount} adults, {hotel.childCount} children
@@ -250,16 +250,16 @@ const MyHotels = () => {
               {/* Hotel Stats */}
               <div className="flex items-center justify-between mb-6 p-4 bg-gray-50 rounded-xl mt-auto">
                 <div className="text-center">
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-lg font-bold text-red-900">
                     {hotel.totalBookings || 0}
                   </p>
-                  <p className="text-xs text-gray-600">Bookings</p>
+                  <p className="text-xs text-red-600">Bookings</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-lg font-bold text-red-900">
                     £{(hotel.totalRevenue || 0).toLocaleString()}
                   </p>
-                  <p className="text-xs text-gray-600">Revenue</p>
+                  <p className="text-xs text-red-600">Revenue</p>
                 </div>
                 <div className="text-center">
                   <p className="text-lg font-bold text-gray-900">

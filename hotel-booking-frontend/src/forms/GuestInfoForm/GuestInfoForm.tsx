@@ -159,7 +159,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
           {/* Price Display */}
           <div className="flex justify-between items-center p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">
+              <span className="text-red-600">
                 £{pricePerNight} × {numberOfNights} night
                 {numberOfNights > 1 ? "s" : ""}
               </span>
@@ -168,7 +168,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
               <div className="text-2xl font-bold text-blue-600">
                 £{totalPrice}
               </div>
-              <div className="text-xs text-gray-500">Total Price</div>
+              <div className="text-xs text-red-500">Total Price</div>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
           >
             {/* Date Selection */}
             <div className="space-y-3">
-              <Label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+              <Label className="flex items-center gap-2 text-sm font-medium text-red-700">
                 <Calendar className="h-4 w-4" />
                 Select Dates
               </Label>
@@ -222,14 +222,14 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
             {/* Guest Count */}
             <div className="space-y-3">
-              <Label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+              <Label className="flex items-center gap-2 text-sm font-medium text-red-700">
                 <Users className="h-4 w-4" />
                 Guest Information
               </Label>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="flex items-center gap-2 text-xs text-gray-600">
+                  <Label className="flex items-center gap-2 text-xs text-red-600">
                     <User className="h-3 w-3" />
                     Adults
                   </Label>
@@ -255,7 +255,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="flex items-center gap-2 text-xs text-gray-600">
+                  <Label className="flex items-center gap-2 text-xs text-red-600">
                     <Baby className="h-3 w-3" />
                     Children
                   </Label>
@@ -292,7 +292,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
           </form>
 
           {/* Additional Info */}
-          <div className="text-xs text-gray-500 text-center pt-2 border-t border-gray-100">
+          <div className="text-xs text-red-500 text-center pt-2 border-t border-red-100">
             Free cancellation • No booking fees • Instant confirmation
           </div>
         </CardContent>

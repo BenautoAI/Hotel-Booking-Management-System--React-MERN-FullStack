@@ -144,11 +144,11 @@ MM/YY: 12/35 CVC: 123`;
   return (
     <div className="p-6">
       <CardHeader className="pb-6">
-        <CardTitle className="flex items-center gap-2 text-2xl font-bold text-gray-900">
+        <CardTitle className="flex items-center gap-2 text-2xl font-bold text-red-900">
           <User className="h-6 w-6 text-blue-600" />
           Confirm Your Details
         </CardTitle>
-        <p className="text-gray-600 mt-2">
+        <p className="text-red-600 mt-2">
           Please review and complete your booking information
         </p>
       </CardHeader>
@@ -157,53 +157,53 @@ MM/YY: 12/35 CVC: 123`;
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Personal Information */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-red-900 flex items-center gap-2">
               <User className="h-5 w-5 text-blue-600" />
               Personal Information
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">
+                <Label className="text-sm font-medium text-red-700">
                   First Name
                 </Label>
                 <Input
                   type="text"
                   readOnly
                   disabled
-                  className="bg-gray-50 text-gray-600"
+                  className="bg-red-50 text-red-600"
                   {...register("firstName")}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">
+                <Label className="text-sm font-medium text-red-700">
                   Last Name
                 </Label>
                 <Input
                   type="text"
                   readOnly
                   disabled
-                  className="bg-gray-50 text-gray-600"
+                  className="bg-red-50 text-red-600"
                   {...register("lastName")}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">
+                <Label className="text-sm font-medium text-red-700">
                   Email
                 </Label>
                 <Input
                   type="email"
                   readOnly
                   disabled
-                  className="bg-gray-50 text-gray-600"
+                  className="bg-red-50 text-red-600"
                   {...register("email")}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <Label className="text-sm font-medium text-red-700 flex items-center gap-2">
                   <Phone className="h-4 w-4" />
                   Phone (Optional)
                 </Label>
@@ -220,7 +220,7 @@ MM/YY: 12/35 CVC: 123`;
 
           {/* Special Requests */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-red-900 flex items-center gap-2">
               <MessageSquare className="h-5 w-5 text-blue-600" />
               Special Requests (Optional)
             </h3>
@@ -229,11 +229,11 @@ MM/YY: 12/35 CVC: 123`;
               <textarea
                 rows={4}
                 placeholder="Any special requests, preferences, or additional information..."
-                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                className="w-full rounded-md border border-red-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                 value={specialRequests}
                 onChange={(e) => setSpecialRequests(e.target.value)}
               />
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-red-500">
                 Let us know if you have any special requirements or preferences
                 for your stay.
               </p>
@@ -242,19 +242,19 @@ MM/YY: 12/35 CVC: 123`;
 
           {/* Price Summary */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-red-900 flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-blue-600" />
               Price Summary
             </h3>
 
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-100">
+            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-lg border border-red-100">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-700 font-medium">Total Cost</span>
+                <span className="text-red-700 font-medium">Total Cost</span>
                 <span className="text-2xl font-bold text-blue-600">
                   £{paymentIntent.totalCost.toFixed(2)}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-gray-500">
+              <div className="flex items-center gap-2 text-xs text-red-500">
                 <CheckCircle className="h-3 w-3 text-green-500" />
                 Includes taxes and charges
               </div>
@@ -263,12 +263,12 @@ MM/YY: 12/35 CVC: 123`;
 
           {/* Payment Details */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-red-900 flex items-center gap-2">
               <Shield className="h-5 w-5 text-blue-600" />
               Payment Details
             </h3>
 
-            <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <div className="border border-red-200 rounded-lg p-4 bg-red-50">
               <CardElement
                 id="payment-element"
                 className="text-sm"
@@ -289,7 +289,7 @@ MM/YY: 12/35 CVC: 123`;
               />
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-gray-500">
+            <div className="flex items-center gap-2 text-xs text-red-500">
               <Shield className="h-3 w-3 text-green-500" />
               Your payment information is secure and encrypted
             </div>
@@ -311,7 +311,7 @@ MM/YY: 12/35 CVC: 123`;
                   </p>
                   <div className="bg-white border border-yellow-300 rounded-md p-3 relative">
                     <div className="flex items-center justify-between">
-                      <div className="text-sm font-mono text-gray-800">
+                      <div className="text-sm font-mono text-red-800">
                         <div>Card: 4242 4242 4242 4242</div>
                         <div>MM/YY: 12/35 CVC: 123 ZIP: 12345</div>
                       </div>
@@ -363,7 +363,7 @@ MM/YY: 12/35 CVC: 123`;
 
         {/* Trust Indicators */}
         <div className="border-t border-gray-100 pt-4">
-          <div className="flex items-center justify-center gap-6 text-xs text-gray-500">
+          <div className="flex items-center justify-center gap-6 text-xs text-red-500">
             <div className="flex items-center gap-1">
               <Shield className="h-3 w-3 text-green-500" />
               Secure Payment

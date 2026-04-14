@@ -366,7 +366,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {/* Destination */}
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 flex items-center">
+          <label className="text-sm font-semibold text-red-700 flex items-center">
             <MapPin className="w-4 h-4 mr-2 text-primary-600" />
             Destination
           </label>
@@ -380,7 +380,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
               onFocus={() => setShowDropdown(filteredPlaces.length > 0)}
               onBlur={() => setShowDropdown(false)}
             />
-            <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+            <MapPin className="absolute left-3 top-3 w-5 h-5 text-red-400" />
             {showDropdown && (
               <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10 max-h-40 overflow-y-auto">
                 {filteredPlaces.map((place) => (
@@ -402,7 +402,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
         {/* Check-in Date */}
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 flex items-center">
+          <label className="text-sm font-semibold text-red-700 flex items-center">
             <Calendar className="w-4 h-4 mr-2 text-primary-600" />
             Check-in
           </label>
@@ -415,13 +415,13 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                 handleInputChange("checkIn", new Date(e.target.value))
               }
             />
-            <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+            <Calendar className="absolute left-3 top-3 w-5 h-5 text-red-400" />
           </div>
         </div>
 
         {/* Check-out Date */}
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 flex items-center">
+          <label className="text-sm font-semibold text-red-700 flex items-center">
             <Calendar className="w-4 h-4 mr-2 text-primary-600" />
             Check-out
           </label>
@@ -434,13 +434,13 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                 handleInputChange("checkOut", new Date(e.target.value))
               }
             />
-            <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+            <Calendar className="absolute left-3 top-3 w-5 h-5 text-red-400" />
           </div>
         </div>
 
         {/* Guests */}
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 flex items-center">
+          <label className="text-sm font-semibold text-red-700 flex items-center">
             <Users className="w-4 h-4 mr-2 text-primary-600" />
             Guests
           </label>
@@ -462,7 +462,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
               <option value="3 adults, 0 children">3 adults</option>
               <option value="4 adults, 0 children">4 adults</option>
             </select>
-            <Users className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+            <Users className="absolute left-3 top-3 w-5 h-5 text-red-400" />
           </div>
         </div>
       </div>
@@ -492,7 +492,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
           {/* Price Range */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-red-700 mb-2">
                 Price Range
               </label>
               <div className="flex space-x-2">
@@ -505,7 +505,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                     handleInputChange("minPrice", e.target.value)
                   }
                 />
-                <span className="flex items-center text-gray-500">-</span>
+                <span className="flex items-center text-red-500">-</span>
                 <input
                   type="number"
                   placeholder="Max"
@@ -520,7 +520,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
             {/* Star Rating */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-red-700 mb-2">
                 Star Rating
               </label>
               <select
@@ -540,7 +540,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
             {/* Hotel Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-red-700 mb-2">
                 Hotel Type
               </label>
               <select
@@ -560,7 +560,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
           {/* Facilities */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-red-700 mb-3">
               Facilities
             </label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -575,7 +575,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                     checked={searchData.facilities.includes(facility.id)}
                     onChange={() => handleFacilityToggle(facility.id)}
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-red-700">
                     {facility.icon} {facility.label}
                   </span>
                 </label>
@@ -586,7 +586,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
           {/* Sort Options */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-red-700 mb-2">
                 Sort By
               </label>
               <select
@@ -603,7 +603,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-red-700 mb-2">
                 Search Radius (km)
               </label>
               <select
@@ -623,7 +623,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
       {/* Quick Search Destinations */}
       <div className="border-t border-gray-200 pt-6">
-        <h3 className="text-sm font-medium text-gray-700 mb-3">
+        <h3 className="text-sm font-medium text-red-700 mb-3">
           Popular Destinations
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -631,7 +631,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
             <button
               key={destination}
               onClick={() => handleQuickSearch(destination)}
-              className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-blue-100 hover:text-blue-700 transition-colors"
+              className="px-3 py-1 text-sm bg-red-100 text-red-700 rounded-full hover:bg-red-200 hover:text-red-800 transition-colors"
             >
               {destination}
             </button>
