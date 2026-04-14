@@ -4,7 +4,19 @@ import type { SearchContext as SearchContextType } from "../contexts/SearchConte
 
 const useSearchContext = () => {
   const context = useContext(SearchContext);
-  return context as SearchContextType;
+  if (!context) {
+    return {
+      destination: "",
+      checkIn: new Date(),
+      checkOut: new Date(),
+      adultCount: 1,
+      childCount: 0,
+      hotelId: "",
+      saveSearchValues: () => {},
+      clearSearchValues: () => {},
+    } as SearchContextType;
+  }
+  return context;
 };
 
 export default useSearchContext;
